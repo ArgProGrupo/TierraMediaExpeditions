@@ -4,11 +4,11 @@ public abstract class Propuestas {
 	protected int costo;
 	protected double tiempo;
 	protected int cupo;
-	protected TipoDeAtraccion tipo; /*Al poner el tipo en un enum limita 
+	protected TipoAtraccion tipo; /*Al poner el tipo en un enum limita 
 	las promociones a todas las atracciones del mismo tipo
 	 ¿Nombre de la atracción?.*/
 	
-	public Propuestas(int costo, double tiempo, int cupo, TipoDeAtraccion tipo) {
+	public Propuestas(int costo, double tiempo, int cupo, TipoAtraccion tipo) {
 		this.costo = costo;
 		this.tiempo = tiempo;
 		this.setCupo(cupo);

@@ -2,7 +2,7 @@ package turismo;
 
 public class DescuentoPorcentaje extends Promocion {
 
-	public DescuentoPorcentaje(int costo, double tiempo, int cupo, TipoDeAtraccion tipo) {
+	public DescuentoPorcentaje(int costo, double tiempo, int cupo, TipoAtraccion tipo) {
 		super(costo, tiempo, cupo, tipo);	
 	}
 
