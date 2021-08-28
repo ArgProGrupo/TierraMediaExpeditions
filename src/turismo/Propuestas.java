@@ -1,17 +1,16 @@
 package turismo;
 
-public abstract class Propuestas {
+public class Propuestas {
 	protected int costo;
 	protected double tiempo;
 	protected int cupo;
-	protected TipoAtraccion tipo; /*Al poner el tipo en un enum limita 
-	las promociones a todas las atracciones del mismo tipo
-	 ¿Nombre de la atracción?.*/
+	protected TipoAtraccion tipo;
 	
 	public Propuestas(int costo, double tiempo, int cupo, TipoAtraccion tipo) {
 		this.costo = costo;
 		this.tiempo = tiempo;
-		this.setCupo(cupo);
+		this.cupo = cupo;
+		//this.setCupo(cupo);
 		this.tipo = tipo;
 	}
 
@@ -27,15 +26,15 @@ public abstract class Propuestas {
 		return cupo;
 	}
 
-	public void setCupo(int cupo) {
+	/*public void setCupo(int cupo) {
 		this.cupo = cupo;
-	}
+	}*/
 	
 	public void asistenciaConfirmada() {
 		if (this.cupo > 0) this.cupo --;
 	}
 
-	public TipoDeAtraccion getTipo() {
+	public TipoAtraccion getTipo() {
 		return tipo;
 	}
 	

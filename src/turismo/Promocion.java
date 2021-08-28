@@ -7,6 +7,7 @@ public abstract class Promocion extends Propuestas{
 	}
 
 	public void calcularCosto(Propuestas uno, Propuestas dos) {
+		
 	}
 	
 	public void calcularCosto(Propuestas uno, Propuestas dos, 

@@ -1,44 +1,47 @@
 package turismo;
 
+import controlDeExcepciones.RequisitosInsuficientesException;
+
 public class Usuario {
 	
 	//atributos
+	protected String nombre;
 	protected int presupuesto;
-	protected double tiempo;
-	protected String tipoAtraccion;
-	protected String atracVisitadas;
+	protected double tiempoDisponible;
+	protected TipoAtraccion atraccionFavorita;
+	//protected TipoAtraccion atraccionesVisitadas;
 	
 	//constructor vacio
+	public Usuario(String nombre, int presupuesto, double tiempoDisponible,
+				   TipoAtraccion atraccionFavorita) {
+		this.nombre = nombre;
+		this.presupuesto = presupuesto;
+		this.tiempoDisponible = tiempoDisponible;
+		this.atraccionFavorita = atraccionFavorita;
+	}
 	
-	
-	
-	
-	//getters and setters
+	//getters
 	public int getPresupuesto() {
 		return presupuesto;
 	}
-	public void setPresupuesto(int presupuesto) {
-		this.presupuesto = presupuesto;
-	}
+	
 	public double getTiempo() {
-		return tiempo;
-	}
-	public void setTiempo(double tiempo) {
-		this.tiempo = tiempo;
-	}
-	public String getTipoAtraccion() {
-		return tipoAtraccion;
-	}
-	public void setTipoAtraccion(String tipoAtraccion) {
-		this.tipoAtraccion = tipoAtraccion;
-	}
-	public String getAtracVisitadas() {
-		return atracVisitadas;
-	}
-	public void setAtracVisitadas(String atracVisitadas) {
-		this.atracVisitadas = atracVisitadas;
+		return tiempoDisponible;
 	}
 	
-
-
+	public TipoAtraccion getTipoAtraccion() {
+		return atraccionFavorita;
+	}
+	
+	/*public String getAtracVisitadas() {
+		return atracVisitadas;
+	}*/
+	
+	public void comprarAtraccion(int costoAtraccion, double duracionAtraccion)
+										throws RequisitosInsuficientesException{
+		if(presupuesto < costoAtraccion || tiempoDisponible < duracionAtraccion)
+			throw new RequisitosInsuficientesException();
+		this.presupuesto -= costoAtraccion;
+		this.tiempoDisponible -= duracionAtraccion;
+	}
 }
