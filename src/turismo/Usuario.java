@@ -22,15 +22,15 @@ public class Usuario {
 	
 	//getters
 	public int getPresupuesto() {
-		return presupuesto;
+		return this.presupuesto;
 	}
 	
 	public double getTiempo() {
-		return tiempoDisponible;
+		return this.tiempoDisponible;
 	}
 	
 	public TipoAtraccion getTipoAtraccion() {
-		return atraccionFavorita;
+		return this.atraccionFavorita;
 	}
 	
 	/*public String getAtracVisitadas() {
@@ -39,8 +39,9 @@ public class Usuario {
 	
 	public void comprarAtraccion(int costoAtraccion, double duracionAtraccion)
 										throws RequisitosInsuficientesException{
-		if(presupuesto < costoAtraccion || tiempoDisponible < duracionAtraccion)
+		if(this.getPresupuesto() < costoAtraccion || this.getTiempo() < duracionAtraccion) {
 			throw new RequisitosInsuficientesException();
+		}
 		this.presupuesto -= costoAtraccion;
 		this.tiempoDisponible -= duracionAtraccion;
 	}
