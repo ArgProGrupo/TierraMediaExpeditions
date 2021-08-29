@@ -6,12 +6,6 @@ public abstract class Promocion extends Propuestas{
 		super(costo, tiempo, cupo, tipo);
 	}
 
-	public void calcularCosto(Propuestas uno, Propuestas dos) {
-		
-	}
-	
-	public void calcularCosto(Propuestas uno, Propuestas dos, 
-			Propuestas tres) {
-	}
+	public abstract void calcularCosto(Propuestas uno, Propuestas dos);
 
 }
