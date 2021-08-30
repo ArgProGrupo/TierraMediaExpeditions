@@ -40,5 +40,18 @@ public class LeerAtracciones {
 			}
 		}
 	}
+	public static List<Propuestas> leerAtraccion(String archivo) {
+		List<Propuestas> propuestas = new ArrayList<Propuestas>();
+		Scanner sc = null;
+		try {
+			sc = new Scanner(new File(archivo));
 
-}
+			while (sc.hasNext()) {
+				String linea = sc.nextLine();
+				String nombreAtraccion = datosAtraccion[0];
+				int costo = Integer.parseInt(datosAtraccion[1]);
+				double tiempo = Double.parseDouble(datosAtraccion[2]);
+				int cupo = Integer.parseInt(datosAtraccion[3]);
+				String tipoAtraccion = datosAtraccion[4];
+				
+				
