@@ -35,7 +35,7 @@ public abstract class Propuestas {
 		if (this.cupo > 0) this.cupo --;
 	}
 
-	public TipoDeAtraccion getTipo() {
+	public TipoAtraccion getTipo() {
 		return tipo;
 	}
 	
