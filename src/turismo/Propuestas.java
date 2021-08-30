@@ -4,9 +4,9 @@ public class Propuestas {
 	protected int costo;
 	protected double tiempo;
 	protected int cupo;
-	protected TipoAtraccion tipo;
+	protected String tipo;
 	
-	public Propuestas(int costo, double tiempo, int cupo, TipoAtraccion tipo) {
+	public Propuestas(int costo, double tiempo, int cupo, String tipo) {
 		this.costo = costo;
 		this.tiempo = tiempo;
 		this.cupo = cupo;
@@ -34,7 +34,7 @@ public class Propuestas {
 		if (this.cupo > 0) this.cupo --;
 	}
 
-	public TipoAtraccion getTipo() {
+	public String getTipo() {
 		return tipo;
 	}
 	
