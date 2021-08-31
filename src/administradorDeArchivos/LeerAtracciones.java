@@ -1,44 +1,47 @@
 package administradorDeArchivos;
 
 import java.io.*;
+import java.util.InputMismatchException;
+import java.util.Scanner;
+
+import turismo.Atraccion;
+import turismo.TipoAtraccion;
 
 public class LeerAtracciones {
-	FileReader fr = null;
-	BufferedReader br = null;
-
-	{
+	
+	public static Atraccion[] leerAtracciones() {
+		File f = new File("files/Atracciones.txt");
+		Scanner sc;
+		Atraccion[] atracciones = null;
+		
 		try {
-			fr = new FileReader("archivos/Atracciones.txt");
-			br = new BufferedReader(fr);
-
-			String linea = br.readLine();
-			while (linea != null) {
-				String[] datosAtraccion = linea.split(",");
-				String nombreAtraccion = datosAtraccion[0];
-				int costo = Integer.parseInt(datosAtraccion[1]);
-				double tiempo = Double.parseDouble(datosAtraccion[2]);
-				int cupo = Integer.parseInt(datosAtraccion[3]);
-				String tipoAtraccion = datosAtraccion[4];
+			sc = new Scanner(f);
+			
+			int size = sc.nextInt();
+			atracciones = new Atraccion[size];
+			
+			String[] line;
+			sc.nextLine();
+			
+			for(int i=0; i<size; i++) {
+				line = sc.nextLine().split(",");
 				
-				System.out.println("Nombre: " + datosAtraccion[0] + 
-								 " / Costo: " + datosAtraccion[1] +
-								 " / Tiempo: " + datosAtraccion[2] +
-								 " / Cupo: " + datosAtraccion[3] +
-								 " / Tipo de Atraccion: " + datosAtraccion[4]);
-
- 				linea = br.readLine();
+				atracciones[i] = new Atraccion(
+						line[0],
+						Integer.parseInt(line[1]),
+						Double.parseDouble(line[2]),
+						Integer.parseInt(line[3]),
+						TipoAtraccion.valueOf(line[4])
+						);
+				
+				//line = null;
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (fr != null) {
-					fr.close();
-				}
-			} catch (Exception e2) {
-				e2.printStackTrace();
-			}
+			sc.close();
+		} catch (FileNotFoundException e) {
+			System.err.println(e.getMessage());
+		} catch (InputMismatchException e) {
+			System.err.println(e.getMessage());
 		}
+		return atracciones;
 	}
-
 }

@@ -5,13 +5,12 @@ import controlDeExcepciones.RequisitosInsuficientesException;
 public class Usuario {
 	
 	//atributos
-	protected String nombre;
-	protected int presupuesto;
-	protected double tiempoDisponible;
-	protected TipoAtraccion atraccionFavorita;
+	private String nombre;
+	private int presupuesto;
+	private double tiempoDisponible;
+	private TipoAtraccion atraccionFavorita;
 	//protected TipoAtraccion atraccionesVisitadas;
 	
-	//constructor vacio
 	public Usuario(String nombre, int presupuesto, double tiempoDisponible,
 				   TipoAtraccion atraccionFavorita) {
 		this.nombre = nombre;
@@ -21,6 +20,10 @@ public class Usuario {
 	}
 	
 	//getters
+	public String getNombre() {
+		return nombre;
+	}
+	
 	public int getPresupuesto() {
 		return this.presupuesto;
 	}
@@ -29,7 +32,7 @@ public class Usuario {
 		return this.tiempoDisponible;
 	}
 	
-	public TipoAtraccion getTipoAtraccion() {
+	public TipoAtraccion getTipoAtraccionFavorita() {
 		return this.atraccionFavorita;
 	}
 	
@@ -37,6 +40,13 @@ public class Usuario {
 		return atracVisitadas;
 	}*/
 	
+	@Override
+	public String toString() {
+		return "Nombre: " + nombre + " | Presupuesto: " + presupuesto + 
+			   " | Tiempo Disponible: " + tiempoDisponible + 
+			   " | Atraccion Favorita: " + atraccionFavorita;
+	}
+
 	public void comprarAtraccion(int costoAtraccion, double duracionAtraccion)
 										throws RequisitosInsuficientesException{
 		if(this.getPresupuesto() < costoAtraccion || this.getTiempo() < duracionAtraccion) {
