@@ -2,7 +2,7 @@ package turismo;
 
 import controlDeExcepciones.RequisitosInsuficientesException;
 
-public class Usuario {
+public class Usuario { //implements Comparable<Atraccion> {
 	
 	//atributos
 	private String nombre;
@@ -46,13 +46,23 @@ public class Usuario {
 			   " | Tiempo Disponible: " + tiempoDisponible + 
 			   " | Atraccion Favorita: " + atraccionFavorita;
 	}
+	
+	public boolean comprarAtraccion(Atraccion atraccion)
+									throws RequisitosInsuficientesException {
+		if(this.getPresupuesto() < atraccion.getCosto() || 
+				this.getTiempo() < atraccion.getTiempo() || 
+				atraccion.getCupo() <= 0) {
+			throw new RequisitosInsuficientesException();
+		}
+		return true;
+	}
 
-	public void comprarAtraccion(int costoAtraccion, double duracionAtraccion)
+	/*public void comprarAtraccion(int costoAtraccion, double duracionAtraccion)
 										throws RequisitosInsuficientesException{
 		if(this.getPresupuesto() < costoAtraccion || this.getTiempo() < duracionAtraccion) {
 			throw new RequisitosInsuficientesException();
 		}
 		this.presupuesto -= costoAtraccion;
 		this.tiempoDisponible -= duracionAtraccion;
-	}
+	}*/
 }

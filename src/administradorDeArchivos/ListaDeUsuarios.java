@@ -7,7 +7,7 @@ import java.util.Scanner;
 import turismo.Usuario;
 import turismo.TipoAtraccion;
 
-public class LeerUsuarios {
+public class ListaDeUsuarios {
 	public static Usuario[] leerUsuarios() {
 		File f = new File("files/Usuarios.txt");
 		Scanner sc;

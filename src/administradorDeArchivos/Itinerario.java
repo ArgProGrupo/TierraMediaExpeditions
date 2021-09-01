@@ -7,7 +7,7 @@ import java.util.Scanner;
 import turismo.Atraccion;
 import turismo.TipoAtraccion;
 
-public class LeerAtracciones {
+public class Itinerario {
 	
 	public static Atraccion[] leerAtracciones() {
 		File f = new File("files/Atracciones.txt");
