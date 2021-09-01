@@ -33,10 +33,6 @@ public class ListaPropuestas {
 
 				Propuestas p = new Atraccion(nombreAtraccion, costo, tiempo, 
 						cupo, tipoAtraccion);
-				
-				System.out.println("Nombre: " + nombreAtraccion + " / Costo: " + costo + " / Tiempo: "
-						+ tiempo + " / Cupo: " + cupo + " / Tipo de Atraccion: "
-						+ tipoAtraccion);
 
 				if (!propuestas.contains(p))
 					propuestas.add(p);
