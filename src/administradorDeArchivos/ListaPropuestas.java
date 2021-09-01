@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -38,12 +39,30 @@ public class ListaPropuestas {
 					propuestas.add(p);
 				
 			}
+			sc.close();
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
+		} catch (InputMismatchException e) {
+			System.err.println(e.getMessage());
 		}
-		sc.close();
 
 		return propuestas;
 	}
-
+	
+	public static void escribirPropuesta(List<Propuestas> atracciones) {
+		File f = new File("archivos/atraccionOUT.txt");
+		PrintWriter pw;
+		
+		try {
+			pw = new PrintWriter(f);
+			
+			for(Propuestas v : atracciones) 
+				pw.write(v.toString()+"\n");
+			
+			pw.close();
+		} catch (FileNotFoundException e) {
+			System.err.println(e.getMessage());
+		}		
+	}
 }
+

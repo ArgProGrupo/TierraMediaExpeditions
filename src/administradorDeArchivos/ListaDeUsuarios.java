@@ -9,7 +9,7 @@ import turismo.TipoAtraccion;
 
 public class ListaDeUsuarios {
 	public static Usuario[] leerUsuarios() {
-		File f = new File("files/Usuarios.txt");
+		File f = new File("archivos/Usuarios.txt");
 		Scanner sc;
 		Usuario[] usuarios = null;
 		
