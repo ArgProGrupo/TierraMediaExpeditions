@@ -1,6 +1,7 @@
 package turismo;
 
 import controlDeExcepciones.RequisitosInsuficientesException;
+import java.util.ArrayList;
 
 public class Usuario { //implements Comparable<Atraccion> {
 	
@@ -9,6 +10,7 @@ public class Usuario { //implements Comparable<Atraccion> {
 	private int presupuesto;
 	private double tiempoDisponible;
 	private TipoAtraccion atraccionFavorita;
+	protected ArrayList<Propuestas> itinerarioUsuario;
 	//protected TipoAtraccion atraccionesVisitadas;
 	
 	public Usuario(String nombre, int presupuesto, double tiempoDisponible,
@@ -36,6 +38,10 @@ public class Usuario { //implements Comparable<Atraccion> {
 		return this.atraccionFavorita;
 	}
 	
+	 public ArrayList<Propuestas> getitinerarioUsuario() {
+	      return this.itinerarioUsuario;
+	  }
+	 
 	/*public String getAtracVisitadas() {
 		return atracVisitadas;
 	}*/
@@ -44,14 +50,15 @@ public class Usuario { //implements Comparable<Atraccion> {
 	public String toString() {
 		return "Nombre: " + nombre + " | Presupuesto: " + presupuesto + 
 			   " | Tiempo Disponible: " + tiempoDisponible + 
-			   " | Atraccion Favorita: " + atraccionFavorita;
+			   " | Atraccion Favorita: " + atraccionFavorita + "| Itinerario: " + itinerarioUsuario;
 	}
 	
-	public boolean comprarAtraccion(Atraccion atraccion)
+	public boolean comprarAtraccion(Propuestas propuesta)
 									throws RequisitosInsuficientesException {
-		if(this.getPresupuesto() < atraccion.getCosto() || 
-				this.getTiempo() < atraccion.getTiempo() || 
-				atraccion.getCupo() <= 0) {
+		if(this.getPresupuesto() < propuesta.getCosto() || 
+				this.getTiempo() < propuesta.getTiempo() || 
+				propuesta.getCupo() <= 0 ||
+				!itinerarioUsuario.contains(propuesta)) {
 			throw new RequisitosInsuficientesException();
 		}
 		return true;
