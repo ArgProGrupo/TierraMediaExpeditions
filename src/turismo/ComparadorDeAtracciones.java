@@ -2,7 +2,7 @@ package turismo;
 
 import java.util.Comparator;
 
-public class ComparadorDeAtracciones implements Comparator<Atraccion> {
+public class ComparadorDeAtracciones implements Comparator<Propuestas> {
 	private TipoAtraccion favorito;
 	
 	public ComparadorDeAtracciones(TipoAtraccion favorito) {
@@ -10,9 +10,25 @@ public class ComparadorDeAtracciones implements Comparator<Atraccion> {
 	}
 
 	@Override
-	public int compare(Atraccion atraccion1, Atraccion atraccion2) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int compare(Propuestas at1, Propuestas at2) {
+		if(this.favorito == at1.getTipo() && this.favorito != at2.getTipo())
+		return -1;
+		else if (this.favorito != at1.getTipo() && this.favorito == at2.getTipo())
+			return 1;
+		else {
+			if(at1.getCosto() > at2.getCosto())
+				return -1;
+			else if(at1.getCosto() < at2.getCosto())
+				return 1;
+			else {
+				if(at1.getTiempo() > at2.getTiempo())
+					return -1;
+				else if (at1.getTiempo() < at2.getTiempo())
+					return 1;
+				else return 0;
+			}
+				
+		}
 	}
 
 }

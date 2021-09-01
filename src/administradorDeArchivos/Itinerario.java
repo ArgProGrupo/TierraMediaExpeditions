@@ -39,8 +39,6 @@ public class Itinerario {
 			sc.close();
 		} catch (FileNotFoundException e) {
 			System.err.println(e.getMessage());
-		} catch (InputMismatchException e) {
-			System.err.println(e.getMessage());
 		}
 		return atracciones;
 	}

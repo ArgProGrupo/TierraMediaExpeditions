@@ -1,38 +1,44 @@
 package administradorDeArchivos;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
 import turismo.*;
 
 public class App {
-	private static List<Propuestas> propuestas;
+	private static List<Propuestas> atracciones;
+	private static Usuario[] usuarios;
+	private static TipoAtraccion favorita ;
+	
+	
 
 	public static void main(String[] args) {
-		ListaPropuestas atracciones = new ListaPropuestas();
-		//LeerUsuarios Usuarios = new LeerUsuarios();
-		System.out.println(atracciones);
-		System.out.println("----------------------");
-		//System.out.println(Usuarios);
-
-	}
-	
-	public static void escribirPropuestas(Propuestas[] propuestas) {
-
-		File f = new File("archivos/Atracciones.txt");
-		PrintWriter pw;
+		atracciones = new ArrayList<Propuestas>();
+		atracciones = ListaPropuestas.leerAtraccion();
+		usuarios = ListaDeUsuarios.leerUsuarios();
 		
-		try {
-			pw = new PrintWriter(f);
-			for(Propuestas p : propuestas)
-				pw.write(p.toString()+ "\n");
-			pw.close();			
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
+		System.out.println("\nLeer Usuarios\n");
+		for(Usuario u : usuarios)
+			System.out.println(u);
+		
+		System.out.println("\nOrdenar por preferencia\n");
+		for(Usuario u : usuarios) {
+		atracciones.sort(new ComparadorDeAtracciones(u.getTipoAtraccionFavorita()));
+			System.out.println("OFERTAS PARA USUARIO : " + u.getNombre() +"\n"
+					+ "Tipo de atraccion favorita: " + u.getTipoAtraccionFavorita()
+					+ ". \n");
+		 for(Propuestas a : atracciones)
+	            System.out.println(a);
+	            System.out.println("---------------");
 		}
+		
+		System.out.println("Leer Atracciones\n");
+
+		for(Propuestas a : atracciones)
+			System.out.println(a);
+		
+		
+
 	}
 
 }
+

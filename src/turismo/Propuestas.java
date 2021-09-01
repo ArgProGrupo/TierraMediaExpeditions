@@ -29,6 +29,8 @@ public class Propuestas {
 		return tipo;
 	}
 	
+	
+	
 	/*public int calcularCupo() {
 		return getCupo();
 	}

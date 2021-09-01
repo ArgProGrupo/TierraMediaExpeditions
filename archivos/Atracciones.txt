@@ -6,7 +6,3 @@ Abismo de Helm,5,2,15,PAISAJE
 Lothlórien,35,1,30,DEGUSTACION
 Erebor,12,3,32,PAISAJE
 Bosque Negro,3,4,12,AVENTURA
-Without Bottom Beer,40,4,35,DEGUSTACION
-Champion of ring,15,3.5,10,JUEGO
-Frodo Kart,1,1,70,JUEGO
-Great Brother Evil,25,8,16,JUEGO
