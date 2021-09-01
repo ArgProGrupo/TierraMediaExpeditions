@@ -1,10 +1,8 @@
 package administradorDeArchivos;
 
 import java.io.*;
-import java.util.*;
-import java.util.Scanner;
 
-import turismo.*;
+import turismo.TipoAtraccion;
 
 public class LeerAtracciones {
 	FileReader fr = null;
@@ -22,7 +20,7 @@ public class LeerAtracciones {
 				int costo = Integer.parseInt(datosAtraccion[1]);
 				double tiempo = Double.parseDouble(datosAtraccion[2]);
 				int cupo = Integer.parseInt(datosAtraccion[3]);
-				String tipoAtraccion = datosAtraccion[4];
+				TipoAtraccion tipoAtraccion = TipoAtraccion.valueOf(datosAtraccion[4]);
 
 				System.out.println("Nombre: " + datosAtraccion[0] + " / Costo: " + datosAtraccion[1] + " / Tiempo: "
 						+ datosAtraccion[2] + " / Cupo: " + datosAtraccion[3] + " / Tipo de Atraccion: "
