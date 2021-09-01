@@ -10,7 +10,6 @@ public class Propuestas {
 		this.costo = costo;
 		this.tiempo = tiempo;
 		this.cupo = cupo;
-		//this.setCupo(cupo);
 		this.tipo = tipo;
 	}
 
@@ -26,20 +25,16 @@ public class Propuestas {
 		return cupo;
 	}
 
-	/*public void setCupo(int cupo) {
-		this.cupo = cupo;
-	}*/
-	
-	public void asistenciaConfirmada() {
-		if (this.cupo > 0) this.cupo --;
-	}
-
 	public TipoAtraccion getTipo() {
 		return tipo;
 	}
 	
-	public int calcularCupo() {
+	/*public int calcularCupo() {
 		return getCupo();
 	}
+	
+	public void asistenciaConfirmada() {
+	if (this.cupo > 0) this.cupo --;
+	}*/
 	
 }
