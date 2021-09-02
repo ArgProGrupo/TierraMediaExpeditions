@@ -1,12 +1,14 @@
 package turismo;
 
 public class Propuestas {
+	protected String nombrePropuesta;
 	protected int costo;
 	protected double tiempo;
 	protected int cupo;
 	protected TipoAtraccion tipo;
 	
-	public Propuestas(int costo, double tiempo, int cupo, TipoAtraccion tipo) {
+	public Propuestas(String nombreAtraccion, int costo, double tiempo, int cupo, TipoAtraccion tipo) {
+		this.nombrePropuesta = nombreAtraccion;
 		this.costo = costo;
 		this.tiempo = tiempo;
 		this.cupo = cupo;

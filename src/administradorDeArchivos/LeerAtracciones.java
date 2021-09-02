@@ -22,9 +22,9 @@ public class LeerAtracciones {
 				int cupo = Integer.parseInt(datosAtraccion[3]);
 				TipoAtraccion tipoAtraccion = TipoAtraccion.valueOf(datosAtraccion[4]);
 
-				System.out.println("Nombre: " + datosAtraccion[0] + " / Costo: " + datosAtraccion[1] + " / Tiempo: "
-						+ datosAtraccion[2] + " / Cupo: " + datosAtraccion[3] + " / Tipo de Atraccion: "
-						+ datosAtraccion[4]);
+				System.out.println("Nombre: " + nombreAtraccion + " / Costo: " + costo + " / Tiempo: "
+						+ tiempo + " / Cupo: " + cupo + " / Tipo de Atraccion: "
+						+ tipoAtraccion);
 
 				linea = br.readLine();
 			}
