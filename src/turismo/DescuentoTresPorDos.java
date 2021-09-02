@@ -1,14 +1,14 @@
 package turismo;
 
 public class DescuentoTresPorDos extends Promocion {
-	private Propuestas atraccionGratis;
+	private Atraccion atraccionGratis;
 
 	public DescuentoTresPorDos(String nombrePropuesta, int costo, double tiempo, int cupo, 
 			TipoAtraccion tipo,int cantAtracciones) {
 		super(nombrePropuesta, costo, tiempo, cupo, tipo, cupo);
-		Propuestas[] atracciones = new Propuestas[cantAtracciones];
+		Atraccion[] atracciones = new Atraccion[cantAtracciones];
 	}
-	public Propuestas getAtraccionGratis() {
+	public Atraccion getAtraccionGratis() {
 		return atraccionGratis;
 	}
 

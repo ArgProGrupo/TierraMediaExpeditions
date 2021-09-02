@@ -7,7 +7,7 @@ public class DescuentoPorcentaje extends Promocion {
 			int cantAtracciones, double descuento) {
 		super(nombrePropuesta, costo, tiempo, cupo, tipo, cantAtracciones);
 		this.descuento = descuento;
-		Propuestas[] atracciones = new Propuestas[cantAtracciones];
+		Atraccion[] atracciones = new Atraccion[cantAtracciones];
 	}
 
 	public double getDescuento() {
