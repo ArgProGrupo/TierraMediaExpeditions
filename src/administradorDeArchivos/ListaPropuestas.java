@@ -64,5 +64,39 @@ public class ListaPropuestas {
 			System.err.println(e.getMessage());
 		}		
 	}
+	public static List<Propuestas> itinerarioUsuario() {
+		List<Propuestas> itinerarioUsuario = new ArrayList<Propuestas>();
+		Scanner sc = null;
+		File f = new File("archivos/itinerarioUsuario.txt");
+		
+		
+		try {
+			sc = new Scanner(f);
+
+			while (sc.hasNext()) {
+				String linea = sc.nextLine();
+				String[] datosAtraccion = linea.split(",");
+				String nombreAtraccion = datosAtraccion[0];
+				int costo = Integer.parseInt(datosAtraccion[1]);
+				double tiempo = Double.parseDouble(datosAtraccion[2]);
+				int cupo = Integer.parseInt(datosAtraccion[3]);
+				TipoAtraccion tipoAtraccion = TipoAtraccion.valueOf(datosAtraccion[4]);
+
+				Propuestas p = new Atraccion(nombreAtraccion, costo, tiempo, 
+						cupo, tipoAtraccion);
+
+				if (!itinerarioUsuario.contains(p))
+					itinerarioUsuario.add(p);
+				
+			}
+			sc.close();
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (InputMismatchException e) {
+			System.err.println(e.getMessage());
+		}
+
+		return itinerarioUsuario;
+	}
 }
 

@@ -3,17 +3,33 @@ package turismo;
 public class DescuentoPorcentaje extends Promocion {
 	private double descuento;
 
-	public DescuentoPorcentaje(int costo, double tiempo, int cupo, TipoAtraccion tipo, double descuento) {
-		super(costo, tiempo, cupo, tipo);
+	public DescuentoPorcentaje(String nombrePropuesta, int costo, double tiempo, int cupo, TipoAtraccion tipo,
+			int cantAtracciones, double descuento) {
+		super(nombrePropuesta, costo, tiempo, cupo, tipo, cantAtracciones);
 		this.descuento = descuento;
-	}
-
-	@Override
-	public void calcularCosto(Propuestas uno, Propuestas dos) {
-		this.costo = (int) ((uno.getCosto() + dos.getCosto()) * getDescuento());
+		Propuestas[] atracciones = new Propuestas[cantAtracciones];
 	}
 
 	public double getDescuento() {
 		return descuento;
+	}
+
+	@Override
+	public void calcularCosto() {
+		this.costo = (int) ((atracciones[0].getCosto() + 
+				atracciones[1].getCosto()) * getDescuento());
+	}
+
+	@Override
+	public void calcularTiempo() {
+		this.tiempo = ((atracciones[0].getTiempo() + atracciones[1].getTiempo()));
+	}
+
+	@Override
+	public int calcularCupo() {
+		if (atracciones[0].getCupo() > atracciones[1].getCupo())
+			return atracciones[0].getCupo();
+		else
+			return atracciones[1].getCupo();
 	}
 }

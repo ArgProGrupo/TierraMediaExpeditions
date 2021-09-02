@@ -1,5 +1,7 @@
 package turismo;
 
+import java.util.Objects;
+
 public class Propuestas {
 	protected String nombrePropuesta;
 	protected int costo;
@@ -7,14 +9,14 @@ public class Propuestas {
 	protected int cupo;
 	protected TipoAtraccion tipo;
 	
-	public Propuestas(String nombreAtraccion, int costo, double tiempo, int cupo, TipoAtraccion tipo) {
-		this.nombrePropuesta = nombreAtraccion;
+	public Propuestas(String nombrePropuesta, int costo, double tiempo, int cupo, TipoAtraccion tipo) {
+		this.nombrePropuesta = nombrePropuesta;
 		this.costo = costo;
 		this.tiempo = tiempo;
 		this.cupo = cupo;
 		this.tipo = tipo;
 	}
-
+// agregar booleano de espromo
 	public int getCosto() {
 		return this.costo;
 	}
@@ -30,6 +32,29 @@ public class Propuestas {
 	public TipoAtraccion getTipo() {
 		return tipo;
 	}
+	
+	public String getNombre() {
+		return nombrePropuesta;
+	}
+	@Override
+	public int hashCode() {
+		return Objects.hash(costo, cupo, nombrePropuesta, tiempo, tipo);
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Propuestas other = (Propuestas) obj;
+		return costo == other.costo && 
+				Objects.equals(nombrePropuesta, other.nombrePropuesta)
+				&& Double.doubleToLongBits(tiempo) == Double.doubleToLongBits(other.tiempo) 
+				&& tipo == other.tipo;
+	}
+	
 	
 	
 	
