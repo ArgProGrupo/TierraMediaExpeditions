@@ -74,8 +74,8 @@ public class Usuario { // implements Comparable<Atraccion> {
 	}
 
 	public boolean comprarAtraccion(Propuestas propuesta) {
-		return (this.getPresupuesto() > propuesta.getCosto() && 
-				this.getTiempo() > propuesta.getTiempo()
+		return (this.getPresupuesto() >= propuesta.getCosto() && 
+				this.getTiempo() >= propuesta.getTiempo()
 				&& propuesta.getCupo() > 0 && 
 				!itinerarioUsuario.contains(propuesta));
 	}
