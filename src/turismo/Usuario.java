@@ -78,10 +78,10 @@ public class Usuario { // implements Comparable<Atraccion> {
 				&& propuesta.getCupo() > 0) {
 		    	  if (itinerarioUsuario == null)
 		    		  return true;
-		    	  else if(itinerarioUsuario.contains(propuesta));
-		    	  return false;
+		    	  else if(!itinerarioUsuario.contains(propuesta));
+		    	  return true;
 		      }
-			return true;
+			return false;
 	}
 
 	public void comprarPropuesta(Propuestas propuesta) {
