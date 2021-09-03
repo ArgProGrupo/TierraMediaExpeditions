@@ -7,8 +7,7 @@ import turismo.*;
 public class App {
 	private static List<Propuestas> atracciones;
 	private static Usuario[] usuarios;
-	private static TipoAtraccion favorita;
-
+	
 	public static void main(String[] args) {
 		atracciones = new ArrayList<Propuestas>();
 		atracciones = ListaPropuestas.leerAtraccion();
@@ -25,7 +24,7 @@ public class App {
 					"\n" + "Tipo de atraccion favorita: "
 					+ u.getTipoAtraccionFavorita() + ". \n");
 			for (Propuestas a : atracciones) {
-				if(u.comprarAtraccion(a))				
+				if(u.puedeComprar(a))				
 				System.out.println(a);
 				}	
 				System.out.println("---------------");

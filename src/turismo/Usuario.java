@@ -24,7 +24,7 @@ public class Usuario { // implements Comparable<Atraccion> {
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
 		this.atraccionFavorita = atraccionFavorita;
-		itinerarioUsuario = (ArrayList<Propuestas>) ListaPropuestas.itinerarioUsuario();
+		itinerarioUsuario = null;
 	}
 
 	// getters
@@ -47,19 +47,18 @@ public class Usuario { // implements Comparable<Atraccion> {
 	public static void getitinerarioUsuario(ArrayList<Propuestas> itinerarioUsuario) {
 		File f = new File("archivos/itinerarioUsuario.txt");
 		PrintWriter pw;
-		
+
 		try {
 			pw = new PrintWriter(f);
-			
-			for(Propuestas v : itinerarioUsuario) 
-				pw.write(v.toString()+"\n");
-			
+
+			for (Propuestas v : itinerarioUsuario)
+				pw.write(v.toString() + "\n");
+
 			pw.close();
 		} catch (FileNotFoundException e) {
 			System.err.println(e.getMessage());
-		}	
+		}
 	}
-	
 
 	/*
 	 * public String getAtracVisitadas() { return atracVisitadas; }
@@ -73,10 +72,23 @@ public class Usuario { // implements Comparable<Atraccion> {
 				"| Itinerario: " + itinerarioUsuario;
 	}
 
-	public boolean comprarAtraccion(Propuestas propuesta) {
-		return (this.getPresupuesto() >= propuesta.getCosto() && 
+	public boolean puedeComprar(Propuestas propuesta) {
+		      if(this.getPresupuesto() >= propuesta.getCosto() && 
 				this.getTiempo() >= propuesta.getTiempo()
-				&& propuesta.getCupo() > 0 && 
-				!itinerarioUsuario.contains(propuesta));
+				&& propuesta.getCupo() > 0) {
+		    	  if (itinerarioUsuario == null)
+		    		  return true;
+		    	  else if(itinerarioUsuario.contains(propuesta));
+		    	  return false;
+		      }
+			return true;
+	}
+
+	public void comprarPropuesta(Propuestas propuesta) {
+		if (puedeComprar(propuesta)) {
+			this.presupuesto -= propuesta.getCosto();
+			this.tiempoDisponible -= propuesta.getTiempo();
+			itinerarioUsuario.add(propuesta);
+		}
 	}
 }
