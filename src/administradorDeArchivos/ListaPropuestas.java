@@ -16,6 +16,7 @@ public class ListaPropuestas {
 		List<Propuestas> propuestas = new ArrayList<Propuestas>();
 		Scanner sc = null;
 		File f = new File("archivos/Atracciones.txt");
+		
 		/*
 		 * File f1 = new File("descuentoporcentaje.txt"); File f2 = new
 		 * File("descuentoabsoluto.txt"); File f3 = new File("descuentotrespordos.txt");
@@ -59,14 +60,14 @@ public class ListaPropuestas {
 
 	}
 
-	public static void escribirPropuesta(List<Propuestas> atracciones) {
+	public static void escribirPropuesta(List<Propuestas> propuestas) {
 		File f = new File("archivos/atraccionOUT.txt");
 		PrintWriter pw;
 
 		try {
 			pw = new PrintWriter(f);
 
-			for (Propuestas v : atracciones)
+			for (Propuestas v : propuestas)
 				pw.write(v.toString() + "\n");
 
 			pw.close();
