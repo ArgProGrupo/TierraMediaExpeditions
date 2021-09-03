@@ -22,7 +22,7 @@ public class App {
 			propuestas.sort(new ComparadorDeAtracciones(u.getTipoAtraccionFavorita()));
 			System.out.println("---------------");
 			for (Propuestas a : propuestas) {
-				if (u.puedeComprar(a)) {
+				if (u.puedeComprar(a) && a.getCupo()>0) {
 					System.out.println(a);
 					System.out.println("Si queres comprar esta propuesta marca 1, sino marca cualquier otro número");
 					int acepta = scanner.nextInt();
@@ -30,6 +30,7 @@ public class App {
 						System.out.println("Compraste " + a + "\n");
 						// aca
 						u.comprarPropuesta(a);
+						a.restarCupo();
 						
 						
 					} 
@@ -45,5 +46,3 @@ public class App {
 	
 
 	}
-
-

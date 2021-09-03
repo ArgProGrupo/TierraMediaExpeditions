@@ -124,8 +124,7 @@ public class Usuario { // implements Comparable<Atraccion> {
 			this.tiempoDisponible -= propuesta.getTiempo();
 			//itinerarioUsuario.add(propuesta);
 		}
-		System.out.println("Te quedan " + this.presupuesto + " monedas y " + this.tiempoDisponible + " horas  \n ------------------------");
+		System.out.println("Te quedan " + this.presupuesto + " monedas y " + this.tiempoDisponible + " horas");
 		}
 	}
 }
-
