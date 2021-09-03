@@ -15,22 +15,19 @@ public class App {
 		propuestas = ListaPropuestas.leerAtraccion();
 		usuarios = ListaDeUsuarios.leerUsuarios();
 		Scanner scanner = new Scanner(System.in);
-
-		System.out.println("\nLeer Usuarios\n");
+		
 		for (Usuario u : usuarios) {
+			System.out.println("\nPROPUESTAS ORDENADAS POR REFERENCIA PARA USUARIO:\n");
 			System.out.println(u);
-			System.out.println("\nOrdenar por preferencia\n");
 			propuestas.sort(new ComparadorDeAtracciones(u.getTipoAtraccionFavorita()));
 			System.out.println("---------------");
-			System.out.println("OFERTAS PARA USUARIO : " + u.getNombre() + "\n" + "Tipo de atraccion favorita: "
-					+ u.getTipoAtraccionFavorita() + ". \n");
 			for (Propuestas a : propuestas) {
 				if (u.puedeComprar(a)) {
 					System.out.println(a);
 					System.out.println("Si queres comprar esta propuesta marca 1, sino marca cualquier otro número");
 					int acepta = scanner.nextInt();
 					if (acepta == 1) {
-						System.out.println("Compraste " + a + "\n --------------------------------------");
+						System.out.println("Compraste " + a + "\n");
 						// aca
 						u.comprarPropuesta(a);
 						

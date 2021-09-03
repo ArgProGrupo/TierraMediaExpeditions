@@ -116,7 +116,7 @@ public class Usuario { // implements Comparable<Atraccion> {
 	//&& !itinerarioUsuario.contains(propuesta)
 
 	public void comprarPropuesta(Propuestas propuesta) {
-	
+		if (puedeComprar(propuesta)) {
 			while (this.getPresupuesto() >= propuesta.getCosto() && this.getPresupuesto() >= 0 && 
 					this.getTiempo() >= propuesta.getTiempo() && this.getTiempo() >= 0  
 					&& propuesta.getCupo() > 0) {
@@ -124,8 +124,8 @@ public class Usuario { // implements Comparable<Atraccion> {
 			this.tiempoDisponible -= propuesta.getTiempo();
 			//itinerarioUsuario.add(propuesta);
 		}
-		System.out.println("Te quedan " + this.presupuesto + " monedas y " + this.tiempoDisponible + " horas");
+		System.out.println("Te quedan " + this.presupuesto + " monedas y " + this.tiempoDisponible + " horas  \n ------------------------");
 		}
 	}
-
+}
 
