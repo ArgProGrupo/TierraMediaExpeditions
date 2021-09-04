@@ -1,37 +1,48 @@
 package administradorDeArchivos;
 
-import java.util.Arrays;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.*;
 
-import turismo.Atraccion;
-import turismo.ComparadorDeAtracciones;
-import turismo.TipoAtraccion;
-import turismo.Usuario;
+import turismo.*;
 
 public class App {
-	private static Atraccion[] atracciones;
-	private static Usuario[] usuarios;
+	public static List<Propuestas> propuestas;
+	public static Usuario[] usuarios;
 
 	public static void main(String[] args) {
-		// Leer archivos
-		
-		System.out.println("Leer Atracciones\n");
-		atracciones = Itinerario.leerAtracciones();
-		for(Atraccion a : atracciones)
-			System.out.println(a);
-		
-		System.out.println("\nOrdenar por mas caro sino por mas tiempo\n");
-		Arrays.sort(atracciones, new ComparadorDeAtracciones());
-
-		
-		System.out.println("\nLeer Usuarios\n");
+		propuestas = new ArrayList<Propuestas>();
+		propuestas = ListaPropuestas.leerAtraccion();
 		usuarios = ListaDeUsuarios.leerUsuarios();
-		for(Usuario u : usuarios)
+		Scanner scanner = new Scanner(System.in);
+		
+		for (Usuario u : usuarios) {
+			System.out.println("\nPROPUESTAS ORDENADAS POR REFERENCIA PARA USUARIO:\n");
 			System.out.println(u);
-		
-		System.out.println("\nOrdenar por preferencia\n");
-		//Arrays.sort(atraccion, new ComparadorPorPreferencia(TipoAtraccion atraccion));
-		
-		
-	}
+			propuestas.sort(new ComparadorDeAtracciones(u.getTipoAtraccionFavorita()));
+			System.out.println("---------------");
+			for (Propuestas a : propuestas) {
+				if (u.puedeComprar(a) && a.getCupo()>0) {
+					System.out.println(a);
+					System.out.println("Si queres comprar esta propuesta marca 1, sino marca cualquier otro número");
+					int acepta = scanner.nextInt();
+					if (acepta == 1) {
+						System.out.println("Compraste " + a + "\n");
+						// aca
+						u.comprarPropuesta(a);
+						a.restarCupo();
+						
+						
+					} 
+				
 
-}
+					}
+
+				}
+
+			}
+		scanner.close();
+		}
+	
+
+	}

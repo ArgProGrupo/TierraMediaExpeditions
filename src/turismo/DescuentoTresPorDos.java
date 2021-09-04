@@ -1,24 +1,38 @@
 package turismo;
 
 public class DescuentoTresPorDos extends Promocion {
-	private Propuestas atraccionGratis;
+	private Atraccion atraccionGratis;
 
-	public DescuentoTresPorDos(int costo, double tiempo, int cupo, TipoAtraccion tipo, Propuestas atraccionGratis) {
-		super(costo, tiempo, cupo, tipo);
-		
+	public DescuentoTresPorDos(String nombrePropuesta, int costo, double tiempo, int cupo, TipoAtraccion tipo,
+			int cantAtracciones) {
+		super(nombrePropuesta, costo, tiempo, cupo, tipo, cantAtracciones);
+		Atraccion[] atracciones = new Atraccion[cantAtracciones];
 	}
+	
 
-	@Override
-	public void calcularCosto(Propuestas uno, Propuestas dos) {
-		this.costo = uno.getCosto() + dos.getCosto();
-	}
-
-	public Propuestas getAtraccionGratis() {
+	public Atraccion getAtraccionGratis() {
 		return atraccionGratis;
 	}
 
-	public void setAtraccionGratis(Propuestas atraccionGratis) {
-		this.atraccionGratis.costo -= atraccionGratis.costo;
+	@Override
+	public void calcularCosto() {
+		this.costo = (int) ((atracciones[0].getCosto() + atracciones[1].getCosto()));
+
 	}
- //Fijarme bien como aplicar este descuento
+
+	@Override
+	public void calcularTiempo() {
+		this.tiempo = atracciones[0].getTiempo() + atracciones[1].getTiempo() + atracciones[2].getTiempo();
+	}
+
+	@Override
+	public int calcularCupo() {
+		if (atracciones[0].getCupo() > atracciones[1].getCupo() && 
+				atracciones[0].getCupo() > atracciones[2].getCupo())
+			return atracciones[0].getCupo();
+		else if (atracciones[1].getCupo() > atracciones[2].getCupo())
+			return atracciones[1].getCupo();
+		else
+			return atracciones[3].getCupo();
+	}	
 }

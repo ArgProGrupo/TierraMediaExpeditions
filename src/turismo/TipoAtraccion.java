@@ -1,9 +1,8 @@
 package turismo;
 
 public enum TipoAtraccion {
-	AVENTURA,
-	PAISAJE,
-	DEGUSTACION,
+	AVENTURA, 
+	PAISAJE, 
+	DEGUSTACION, 
 	JUEGO
-
 }
