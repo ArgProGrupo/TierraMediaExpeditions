@@ -6,20 +6,19 @@ import java.util.*;
 
 
 public abstract class Promocion extends Propuestas{
-	private static int cantAtracciones;
-	protected Atraccion [] atracciones;
-
-	public Promocion(String nombrePropuesta, int costo, double tiempo, int cupo,
-			TipoAtraccion tipo, int cantAtracciones) {
-		super(nombrePropuesta, costo, tiempo, cupo, tipo);
-		this.cantAtracciones = cantAtracciones;
-		Atraccion[] atracciones = new Atraccion[cantAtracciones];
+	protected static int cantAtracciones;
+	protected static ArrayList<Propuestas> promo;
+	protected double descuento;
+	
+	public Promocion(String nombrePropuesta, TipoAtraccion tipo,
+			int cantAtracciones) {
+		super(nombrePropuesta, tipo, cantAtracciones);
 	}
 	
 
-	public abstract void calcularCosto();
+	public abstract int calcularCosto();
 	
-	public abstract void calcularTiempo();
+	public abstract double calcularTiempo();
 	
 	public abstract int calcularCupo();
 }

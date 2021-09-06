@@ -22,7 +22,7 @@ public class App {
 			for (Propuestas a : propuestas) {
 				if (u.puedeComprar(a) && a.getCupo()>0) {
 					System.out.println(a);
-					System.out.println("Si queres comprar esta propuesta marca 1, sino marca cualquier otro n�mero");
+					System.out.println("Si queres comprar esta propuesta marca 1, sino marca cualquier otro número");
 					int acepta = scanner.nextInt();
 					if (acepta == 1) {
 						System.out.println("Compraste " + a + "\n");
@@ -34,12 +34,10 @@ public class App {
 
 				}
 			System.out.println("Gracias " + u.getNombre() + " por elegir y confiar en TierraMediaExpeditions.\n"
-					+ "A continuaci�n podr� observar su itinerario: \n" + 
-					"\nIntinerario de "+ u.getNombre()+"\n" + u.itinerarioUsuario) ;
+					+ "A continuación podrá observar su itinerario: \n" + 
+					"\nIntinerario de "+ u.getNombre()+"\n" + u.itinerarioUsuario + "\n") ;
 			System.out.println("---------------");
 			}
 		scanner.close();
 		}
-	
-
 	}
