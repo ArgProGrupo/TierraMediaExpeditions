@@ -1,1 +1,1 @@
-Pack DEGUSTACION,DEGUSTACION,2,Lothlórien,La Comarca,
+Pack DEGUSTACION,DEGUSTACION,2,LothlÃ³rien,La Comarca,
