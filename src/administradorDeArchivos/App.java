@@ -1,13 +1,11 @@
 package administradorDeArchivos;
 
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
 import java.util.*;
 
 import turismo.*;
 
 public class App {
-	public static List<Propuestas> propuestas;
+	private static List<Propuestas> propuestas;
 	public static Usuario[] usuarios;
 
 	public static void main(String[] args) {
@@ -31,15 +29,14 @@ public class App {
 						// aca
 						u.comprarPropuesta(a);
 						a.restarCupo();
-						
-						
-					} 
-				
-
+						}
 					}
 
 				}
-
+			System.out.println("Gracias " + u.getNombre() + " por elegir y confiar en TierraMediaExpeditions.\n"
+					+ "A continuación podrá observar su itinerario: \n" + 
+					"\nIntinerario de "+ u.getNombre()+"\n" + u.itinerarioUsuario) ;
+			System.out.println("---------------");
 			}
 		scanner.close();
 		}
