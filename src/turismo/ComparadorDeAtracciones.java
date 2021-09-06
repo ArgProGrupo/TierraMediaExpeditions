@@ -16,8 +16,11 @@ public class ComparadorDeAtracciones implements Comparator<Propuestas> {
 		else if (this.favorito != at1.getTipo() && this.favorito == at2.getTipo())
 			return 1;
 		else {
-			//agregar esPromo booleano
-			if(at1.getCosto() > at2.getCosto())
+			if(at1.esPromo == true && at2.esPromo != true)
+				return -1;
+			else if( at1.esPromo != true && at2.esPromo == true)
+				return 1;			
+		else if(at1.getCosto() > at2.getCosto())
 				return -1;
 			else if(at1.getCosto() < at2.getCosto())
 				return 1;

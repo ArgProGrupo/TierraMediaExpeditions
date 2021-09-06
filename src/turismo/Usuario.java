@@ -1,10 +1,7 @@
 package turismo;
 
-import controlDeExcepciones.RequisitosInsuficientesException;
-import turismo.*;
 import java.io.*;
 import java.util.*;
-import administradorDeArchivos.*;
 
 public class Usuario { // implements Comparable<Atraccion> {
 
@@ -16,7 +13,8 @@ public class Usuario { // implements Comparable<Atraccion> {
 	public ArrayList<Propuestas> itinerarioUsuario;
 	
 
-	public Usuario(String nombre, int presupuesto, double tiempoDisponible, TipoAtraccion atraccionFavorita) {
+	public Usuario(String nombre, int presupuesto, double tiempoDisponible, 
+			TipoAtraccion atraccionFavorita) {
 		this.nombre = nombre;
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
@@ -80,7 +78,8 @@ public class Usuario { // implements Comparable<Atraccion> {
 
 	@Override
 	public String toString() {
-		return "Nombre: " + nombre + " | Presupuesto: " + presupuesto + " | Tiempo Disponible: " + tiempoDisponible
+		return "Nombre: " + nombre + " | Presupuesto: " + presupuesto + 
+				" | Tiempo Disponible: " + tiempoDisponible
 				+ " | Atraccion Favorita: " + atraccionFavorita ;
 	}
 
@@ -108,7 +107,8 @@ public class Usuario { // implements Comparable<Atraccion> {
 			this.tiempoDisponible -= propuesta.getTiempo();
 			itinerarioUsuario.add(propuesta);
 		
-		System.out.println("Te quedan " + this.presupuesto + " monedas y " + this.tiempoDisponible + " horas");
+		System.out.println("Te quedan " + this.presupuesto + " monedas y " + 
+		this.tiempoDisponible + " horas");
 		}
 	}
 }

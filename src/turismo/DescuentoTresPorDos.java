@@ -5,7 +5,7 @@ public class DescuentoTresPorDos extends Promocion {
 
 	public DescuentoTresPorDos(String nombrePropuesta, int costo, double tiempo, int cupo, TipoAtraccion tipo,
 			int cantAtracciones) {
-		super(nombrePropuesta, costo, tiempo, cupo, tipo, cantAtracciones);
+		super(nombrePropuesta, tipo, cantAtracciones);
 		Atraccion[] atracciones = new Atraccion[cantAtracciones];
 	}
 	
