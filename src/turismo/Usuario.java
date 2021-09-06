@@ -22,7 +22,7 @@ public class Usuario {
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
 		this.atraccionFavorita = atraccionFavorita;
-		
+		this.itinerarioUsuario = new ArrayList<Propuestas>();
 		
 	}
 
@@ -41,47 +41,34 @@ public class Usuario {
 	public TipoAtraccion getTipoAtraccionFavorita() {
 		return this.atraccionFavorita;
 	}
-
 	
-	public static List<Propuestas> LeerItinerarioUsuario() {
-		List<Propuestas> itinerarioUsuario = new ArrayList<Propuestas>();
-		Scanner sc = null;
-		File f = new File("archivos/itinerarioUsuario.txt");
+	public void itinerarioUsuario(List<Propuestas> itinerario) {
+			File f = new File("archivos/itinerarioUsuario.txt");
+			
+			PrintWriter pw;
 
-		try {
-			sc = new Scanner(f);
+			try {
+				pw = new PrintWriter(f);
 
-			while (sc.hasNext()) {
-				String linea = sc.nextLine();
-				String[] datosAtraccion = linea.split(",");
-				String nombreAtraccion = datosAtraccion[0];
-				int costo = Integer.parseInt(datosAtraccion[1]);
-				double tiempo = Double.parseDouble(datosAtraccion[2]);
-				int cupo = Integer.parseInt(datosAtraccion[3]);
-				TipoAtraccion tipoAtraccion = TipoAtraccion.valueOf(datosAtraccion[4]);
+				for (Propuestas v : itinerario)
+					pw.write(v.toString() + "\n");
 
-				Propuestas v = new Propuestas (nombreAtraccion, costo, tiempo, cupo, tipoAtraccion);
+				pw.close();
+			} catch (FileNotFoundException e) {
+				System.err.println(e.getMessage());
 			}
-			sc.close();
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (InputMismatchException e) {
-			System.err.println(e.getMessage());
 		}
-
-		return itinerarioUsuario;
-	}
 	
 	
-	public static void getitinerarioUsuario(ArrayList<Propuestas> itinerarioUsuario) {
+	
+	public static void getitinerarioUsuario(List<Propuestas> propuestas) {
 		File f = new File("archivos/itinerarioUsuario.txt");
 		PrintWriter pw;
 
 		try {
 			pw = new PrintWriter(f);
 
-			for (Propuestas v : itinerarioUsuario)
+			for (Propuestas v : propuestas)
 				pw.write(v.toString() + "\n");
 
 			pw.close();
@@ -94,7 +81,7 @@ public class Usuario {
 	@Override
 	public String toString() {
 		return "Nombre: " + nombre + " | Presupuesto: " + presupuesto + " | Tiempo Disponible: " + tiempoDisponible
-				+ " | Atraccion Favorita: " + atraccionFavorita + "| Itinerario: " + itinerarioUsuario;
+				+ " | Atraccion Favorita: " + atraccionFavorita ;
 	}
 
 	// PROBAR QUE LEA EL ARCHIVO ITINERARIO CON METODOS QUE ESTAN EN LISTAUSUARIOS Y
@@ -117,13 +104,10 @@ public class Usuario {
 
 	public void comprarPropuesta(Propuestas propuesta) {
 		if (puedeComprar(propuesta)) {
-			while (this.getPresupuesto() >= propuesta.getCosto() && this.getPresupuesto() >= 0 && 
-					this.getTiempo() >= propuesta.getTiempo() && this.getTiempo() >= 0  
-					&& propuesta.getCupo() > 0) {
 			this.presupuesto -= propuesta.getCosto();
 			this.tiempoDisponible -= propuesta.getTiempo();
-			//itinerarioUsuario.add(propuesta);
-		}
+			itinerarioUsuario.add(propuesta);
+		
 		System.out.println("Te quedan " + this.presupuesto + " monedas y " + this.tiempoDisponible + " horas");
 		}
 	}

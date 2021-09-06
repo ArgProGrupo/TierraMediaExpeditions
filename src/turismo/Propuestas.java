@@ -61,9 +61,13 @@ public abstract class Propuestas {
 	}
 	
 	public int restarCupo() {
-		int cupo = this.cupo- 1;
-		System.out.println("El cupo disponible para esta atracción es de " + cupo + "\n ------------------------");
+		if(this.cupo > 0) {
+				this.cupo = getCupo();
+		this.cupo --;
+		System.out.println("El cupo disponible para esta atracción es de " + 
+		cupo + "\n ------------------------");
+		}
 		return cupo;
-	
+		
 }
 }

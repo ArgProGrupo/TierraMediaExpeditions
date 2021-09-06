@@ -42,5 +42,4 @@ public class ListaDeUsuarios {
 		}
 		return usuarios;
 	}
-
 }
