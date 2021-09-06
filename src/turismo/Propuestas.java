@@ -55,15 +55,14 @@ public class Propuestas {
 				&& tipo == other.tipo;
 	}
 	
-	
-	
-	
-	/*public int calcularCupo() {
-		return getCupo();
-	}
-	
-	public void asistenciaConfirmada() {
-	if (this.cupo > 0) this.cupo --;
-	}*/
-	
+	public int restarCupo() {
+		if(this.cupo > 0) {
+				this.cupo = getCupo();
+		this.cupo --;
+		System.out.println("El cupo disponible para esta atracción es de " + 
+		cupo + "\n ------------------------");
+		}
+		return cupo;
+		
+}
 }
