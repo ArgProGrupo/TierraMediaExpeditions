@@ -1,19 +1,22 @@
 package turismo;
 
-import java.io.File;
-import java.lang.reflect.Array;
+//import java.io.File;
+//import java.lang.reflect.Array;
 import java.util.*;
 
 
 public abstract class Promocion extends Propuestas{
-	private static int cantAtracciones;
-	protected Atraccion [] atracciones;
+	protected List<Atraccion> atracciones;
 
-	public Promocion(String nombrePropuesta, int costo, double tiempo, int cupo,
-			TipoAtraccion tipo, int cantAtracciones) {
+	public Promocion(List<Atraccion> atracciones, String nombrePropuesta, int costo, double tiempo, int cupo,
+			TipoAtraccion tipo) {
 		super(nombrePropuesta, costo, tiempo, cupo, tipo);
-		this.cantAtracciones = cantAtracciones;
-		Atraccion[] atracciones = new Atraccion[cantAtracciones];
+		this.atracciones = atracciones;
+	}
+	
+	public Promocion(List<Atraccion> atracciones, String nombrePropuesta ) {
+		super(nombrePropuesta, 0, 0.0, 0, null);
+		this.atracciones = atracciones;
 	}
 	
 

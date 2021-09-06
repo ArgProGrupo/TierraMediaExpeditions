@@ -1,23 +1,23 @@
 package administradorDeArchivos;
 
-import java.io.*;
-import java.util.InputMismatchException;
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-import turismo.Usuario;
+import turismo.Atraccion;
 import turismo.TipoAtraccion;
 
-public class ListaDeUsuarios {
-	public static Usuario[] leerUsuarios() {
-		File f = new File("archivos/Usuarios.txt");
+public class AdministradorDeArchivos {
+	public static Atraccion[] leerAtracciones() {
+		File f = new File("files/Atracciones.txt");
 		Scanner sc;
-		Usuario[] usuarios = null;
+		Atraccion[] atracciones = null;
 		
 		try {
 			sc = new Scanner(f);
 			
 			int size = sc.nextInt();
-			usuarios = new Usuario[size];
+			atracciones = new Atraccion[size];
 			
 			String[] line;
 			sc.nextLine();
@@ -25,11 +25,12 @@ public class ListaDeUsuarios {
 			for(int i=0; i<size; i++) {
 				line = sc.nextLine().split(",");
 				
-				usuarios[i] = new Usuario(
+				atracciones[i] = new Atraccion(
 						line[0],
 						Integer.parseInt(line[1]),
 						Double.parseDouble(line[2]),
-						TipoAtraccion.valueOf(line[3])
+						Integer.parseInt(line[3]),
+						TipoAtraccion.valueOf(line[4])
 						);
 				
 				//line = null;
@@ -37,10 +38,7 @@ public class ListaDeUsuarios {
 			sc.close();
 		} catch (FileNotFoundException e) {
 			System.err.println(e.getMessage());
-		} catch (InputMismatchException e) {
-			System.err.println(e.getMessage());
 		}
-		return usuarios;
+		return atracciones;
 	}
-
 }

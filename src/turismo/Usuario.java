@@ -1,14 +1,15 @@
 package turismo;
 
-import controlDeExcepciones.RequisitosInsuficientesException;
-import turismo.*;
-import java.io.*;
-import java.util.*;
-import administradorDeArchivos.*;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.InputMismatchException;
+import java.util.List;
+import java.util.Scanner;
 
-public class Usuario { // implements Comparable<Atraccion> {
-
-	// atributos
+public class Usuario {
+	
 	public String nombre;
 	public int presupuesto;
 	public double tiempoDisponible;
@@ -25,7 +26,6 @@ public class Usuario { // implements Comparable<Atraccion> {
 		
 	}
 
-	// getters
 	public String getNombre() {
 		return nombre;
 	}
