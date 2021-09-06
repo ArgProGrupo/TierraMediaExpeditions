@@ -15,7 +15,7 @@ public class App {
 		Scanner scanner = new Scanner(System.in);
 		
 		for (Usuario u : usuarios) {
-			System.out.println("\nPROPUESTAS ORDENADAS POR REFERENCIA PARA USUARIO:\n");
+			System.out.println("\nPROPUESTAS ORDENADAS POR PREFERENCIA PARA USUARIO:\n");
 			System.out.println(u);
 			propuestas.sort(new ComparadorDeAtracciones(u.getTipoAtraccionFavorita()));
 			System.out.println("---------------");

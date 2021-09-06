@@ -81,7 +81,7 @@ public class Usuario { // implements Comparable<Atraccion> {
 	@Override
 	public String toString() {
 		return "Nombre: " + nombre + " | Presupuesto: " + presupuesto + " | Tiempo Disponible: " + tiempoDisponible
-				+ " | Atraccion Favorita: " + atraccionFavorita + "| Itinerario: " + itinerarioUsuario;
+				+ " | Atraccion Favorita: " + atraccionFavorita ;
 	}
 
 	// PROBAR QUE LEA EL ARCHIVO ITINERARIO CON METODOS QUE ESTAN EN LISTAUSUARIOS Y
