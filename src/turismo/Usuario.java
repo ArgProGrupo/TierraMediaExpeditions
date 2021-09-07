@@ -1,10 +1,7 @@
 package turismo;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 public class Usuario {
 	
@@ -15,7 +12,8 @@ public class Usuario {
 	public ArrayList<Propuestas> itinerarioUsuario;
 	
 
-	public Usuario(String nombre, int presupuesto, double tiempoDisponible, TipoAtraccion atraccionFavorita) {
+	public Usuario(String nombre, int presupuesto, double tiempoDisponible, 
+			TipoAtraccion atraccionFavorita) {
 		this.nombre = nombre;
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
@@ -57,28 +55,19 @@ public class Usuario {
 			}
 		}
 	
-	
-	
-	public static void getitinerarioUsuario(List<Propuestas> propuestas) {
-		File f = new File("archivos/itinerarioUsuario.txt");
-		PrintWriter pw;
-
-		try {
-			pw = new PrintWriter(f);
-
-			for (Propuestas v : propuestas)
-				pw.write(v.toString() + "\n");
-
-			pw.close();
-		} catch (FileNotFoundException e) {
-			System.err.println(e.getMessage());
-		}
+	public String getItinerarioString() {
+		String itinerario = "";
+		if(itinerario == "") {
+		for(Propuestas p: itinerarioUsuario) itinerario += p + "\n";
+		} else itinerario = "";
+		return itinerario;
+		
 	}
-
 
 	@Override
 	public String toString() {
-		return "Nombre: " + nombre + " | Presupuesto: " + presupuesto + " | Tiempo Disponible: " + tiempoDisponible
+		return "Nombre: " + nombre + " | Presupuesto: " + presupuesto + 
+				" | Tiempo Disponible: " + tiempoDisponible
 				+ " | Atraccion Favorita: " + atraccionFavorita ;
 	}
 
@@ -106,7 +95,8 @@ public class Usuario {
 			this.tiempoDisponible -= propuesta.getTiempo();
 			itinerarioUsuario.add(propuesta);
 		
-		System.out.println("Te quedan " + this.presupuesto + " monedas y " + this.tiempoDisponible + " horas");
+		System.out.println("Te quedan " + this.presupuesto + " monedas y " + 
+		this.tiempoDisponible + " horas");
 		}
 	}
 }

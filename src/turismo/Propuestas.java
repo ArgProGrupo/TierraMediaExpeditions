@@ -3,13 +3,13 @@ package turismo;
 import java.util.Objects;
 
 public class Propuestas {
-	protected boolean esPromo;
-	
 	protected String nombrePropuesta;
 	protected int costo;
 	protected double tiempo;
 	protected int cupo;
 	protected TipoAtraccion tipo;
+	protected int cantAtracciones;
+	protected boolean esPromo;
 	
 	public Propuestas(String nombrePropuesta, int costo, double tiempo, int cupo, TipoAtraccion tipo) {
 		this.nombrePropuesta = nombrePropuesta;
@@ -18,6 +18,13 @@ public class Propuestas {
 		this.cupo = cupo;
 		this.tipo = tipo;
 	}
+	
+	public Propuestas(String nombrePropuesta, TipoAtraccion tipo, int cantAtracciones) {
+		this.nombrePropuesta = nombrePropuesta;
+		this.tipo = tipo;
+		this.cantAtracciones = cantAtracciones;
+	}
+	
 // agregar booleano de espromo
 	
 	//public abstract boolean esPromo();

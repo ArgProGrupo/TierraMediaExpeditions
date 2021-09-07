@@ -1,1 +1,1 @@
-Pack AVENTURA,AVENTURA,2,Bosque Negro,Moria,
+Pack AVENTURA-AVENTURA-2-0.8- Moria,10,2,6,AVENTURA Bosque Negro,3,4,12,AVENTURA

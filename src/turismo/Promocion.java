@@ -6,6 +6,7 @@ import java.util.*;
 
 
 public abstract class Promocion extends Propuestas{
+/*<<<<<<< HEAD
 	protected List<Atraccion> atracciones;
 
 	public Promocion(List<Atraccion> atracciones, String nombrePropuesta, int costo, double tiempo, int cupo,
@@ -17,12 +18,21 @@ public abstract class Promocion extends Propuestas{
 	public Promocion(List<Atraccion> atracciones, String nombrePropuesta ) {
 		super(nombrePropuesta, 0, 0.0, 0, null);
 		this.atracciones = atracciones;
+=======*/
+	
+	protected static int cantAtracciones;
+	protected static ArrayList<Propuestas> promo;
+	protected double descuento;
+	
+	public Promocion(String nombrePropuesta, TipoAtraccion tipo,
+			int cantAtracciones) {
+		super(nombrePropuesta, tipo, cantAtracciones);
 	}
 	
 
-	public abstract void calcularCosto();
+	public abstract int calcularCosto();
 	
-	public abstract void calcularTiempo();
+	public abstract double calcularTiempo();
 	
 	public abstract int calcularCupo();
 }

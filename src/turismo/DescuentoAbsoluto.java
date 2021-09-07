@@ -9,9 +9,16 @@ public class DescuentoAbsoluto extends Promocion {
 			TipoAtraccion tipo) {
 		super(atracciones, nombrePropuesta, costo, tiempo, cupo, tipo);
 	}
-
-	public DescuentoAbsoluto(List<Atraccion> atracciones, String nombrePropuesta) {
-		super(atracciones, nombrePropuesta);
+	
+    // HEAD
+	/*public DescuentoAbsoluto(List<Atraccion> atracciones, String nombrePropuesta) {
+		super(atracciones, nombrePropuesta);*/
+	// =======
+	public DescuentoAbsoluto(String nombrePropuesta, int costo, double tiempo,
+			int cupo, TipoAtraccion tipo, int cantAtracciones, int descuento) {
+		super(nombrePropuesta, tipo, descuento);
+		this.descuento = descuento;
+		Atraccion[] atracciones = new Atraccion[cantAtracciones];
 	}
 
 	private int descuento;
