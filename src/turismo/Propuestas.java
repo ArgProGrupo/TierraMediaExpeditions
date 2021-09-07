@@ -2,7 +2,7 @@ package turismo;
 
 import java.util.Objects;
 
-public abstract class Propuestas {
+public class Propuestas {
 	protected boolean esPromo;
 	
 	protected String nombrePropuesta;
@@ -20,7 +20,7 @@ public abstract class Propuestas {
 	}
 // agregar booleano de espromo
 	
-	public abstract boolean esPromo();
+	//public abstract boolean esPromo();
 	
 	public int getCosto() {
 		return this.costo;
