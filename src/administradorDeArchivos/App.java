@@ -35,7 +35,8 @@ public class App {
 				}
 			System.out.println("Gracias " + u.getNombre() + " por elegir y confiar en TierraMediaExpeditions.\n"
 					+ "A continuación podrá observar su itinerario: \n" + 
-					"\nIntinerario de "+ u.getNombre()+"\n" + u.itinerarioUsuario + "\n") ;
+					"\nIntinerario de "+ u.getNombre()+"\n") ;
+			System.out.println(u.getItinerarioString());
 			System.out.println("---------------");
 			}
 		scanner.close();

@@ -37,7 +37,7 @@ public class ListaPropuestas {
 				if (!propuestas.contains(p))
 					propuestas.add(p);
 			}
-
+			sc.close();
 			/*
 			 * sc1 = new Scanner(f1);
 			 * 

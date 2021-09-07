@@ -57,24 +57,14 @@ public class Usuario { // implements Comparable<Atraccion> {
 			}
 		}
 	
-	
-	
-	public static void getitinerarioUsuario(List<Propuestas> propuestas) {
-		File f = new File("archivos/itinerarioUsuario.txt");
-		PrintWriter pw;
-
-		try {
-			pw = new PrintWriter(f);
-
-			for (Propuestas v : propuestas)
-				pw.write(v.toString() + "\n");
-
-			pw.close();
-		} catch (FileNotFoundException e) {
-			System.err.println(e.getMessage());
-		}
+	public String getItinerarioString() {
+		String itinerario = "";
+		if(itinerario == "") {
+		for(Propuestas p: itinerarioUsuario) itinerario += p + "\n";
+		} else itinerario = "";
+		return itinerario;
+		
 	}
-
 
 	@Override
 	public String toString() {
