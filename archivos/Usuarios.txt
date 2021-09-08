@@ -1,4 +1,8 @@
-5
+9
+MandarinaMagma,100,11,AVENTURA
+EncuentroDeTrovadores,100,10,PAISAJE
+Lord Facu,100,10,DEGUSTACION
+Lady Ivana,100,10,PAISAJE
 Alvaro,100,10,AVENTURA
 Eowyn,10,8,AVENTURA
 Gandalf,100,5,PAISAJE

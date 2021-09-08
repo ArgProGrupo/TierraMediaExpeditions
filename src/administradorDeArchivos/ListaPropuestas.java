@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import turismo.*;
+import administradorDeArchivos.App;
 
 public class ListaPropuestas {
 
@@ -16,7 +17,6 @@ public class ListaPropuestas {
 		List<Propuestas> propuestas = new ArrayList<Propuestas>();
 
 		Scanner sc = null;
-		Scanner sc1 = null;
 		File f = new File("archivos/Atracciones.txt");
 		File f1 = new File("archivos/descuentoporcentaje.txt");
 
@@ -37,93 +37,47 @@ public class ListaPropuestas {
 				if (!propuestas.contains(p))
 					propuestas.add(p);
 			}
-
-			/*
-			 * sc1 = new Scanner(f1);
-			 * 
-			 * while (sc1.hasNext()) { String linea1 = sc1.nextLine(); String[] datosPromo =
-			 * linea1.split("-"); String nombrePromo = datosPromo[0]; TipoAtraccion
-			 * tipoAtraccion1 = TipoAtraccion.valueOf(datosPromo[1]); int cantAtracciones =
-			 * Integer.parseInt(datosPromo[2]); double descuento =
-			 * Double.parseDouble(datosPromo[3]); List<Propuestas> promo = new
-			 * ArrayList<Propuestas>();
-			 * 
-			 * if (linea1.isBlank()) { String[] datosAtraccion1 = linea1.split(","); String
-			 * nombreAtraccion1 = datosAtraccion1[0]; int costo1 =
-			 * Integer.parseInt(datosAtraccion1[1]); double tiempo1 =
-			 * Double.parseDouble(datosAtraccion1[2]); int cupo1 =
-			 * Integer.parseInt(datosAtraccion1[3]); TipoAtraccion tipoAtraccion2 =
-			 * TipoAtraccion.valueOf(datosAtraccion1[4]);
-			 * 
-			 * Propuestas p1 = new Atraccion(nombreAtraccion1, costo1, tiempo1, cupo1,
-			 * tipoAtraccion2);
-			 * 
-			 * if (!promo.contains(p1)) promo.add(p1); }
-			 * 
-			 * Promocion pr = new DescuentoPorcentaje(nombrePromo, tipoAtraccion1,
-			 * cantAtracciones,descuento, promo);
-			 * 
-			 * if (!propuestas.contains(pr)) propuestas.add(pr); }
-			 */
 			sc.close();
 
-		}
+			sc = new Scanner(f1);
 
-		catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (InputMismatchException e) {
-			System.err.println(e.getMessage());
-		}
-		return propuestas;
-	}
-
-	/*public static List<Propuestas> leerPromo() {
-		List<Propuestas> promociones = new ArrayList<Propuestas>();
-		Scanner sc1 = null;
-		File f1 = new File("archivos/descuentoporcentaje.txt");
-
-		try {
-			sc1 = new Scanner(f1);
-
-			while (sc1.hasNext()) {
-				String linea1 = sc1.nextLine();
+			while (sc.hasNext()) {
+				String linea1 = sc.nextLine();
 				String[] datosPromo = linea1.split("-");
 				String nombrePromo = datosPromo[0];
 				TipoAtraccion tipoAtraccion1 = TipoAtraccion.valueOf(datosPromo[1]);
 				int cantAtracciones = Integer.parseInt(datosPromo[2]);
 				double descuento = Double.parseDouble(datosPromo[3]);
 				List<Propuestas> promo = new ArrayList<Propuestas>();
-
-				if (linea1.isBlank()) {
-					while(sc1.hasNext()) {
-					String linea2 = sc1.nextLine();
-					String[] datosAtraccion1 = linea2.split(",");
-					String nombreAtraccion1 = datosAtraccion1[0];
-					int costo1 = Integer.parseInt(datosAtraccion1[1]);
-					double tiempo1 = Double.parseDouble(datosAtraccion1[2]);
-					int cupo1 = Integer.parseInt(datosAtraccion1[3]);
-					TipoAtraccion tipoAtraccion2 = TipoAtraccion.valueOf(datosAtraccion1[4]);
-
-					Propuestas p1 = new Atraccion(nombreAtraccion1, costo1, tiempo1, cupo1, tipoAtraccion2);
-
-					if (!promo.contains(p1))
-						promo.add(p1);
+				
+				String[] linea2 = datosPromo;
+				String[] ListaAtracciones = linea2[4].split(",");
+				for (Propuestas a : propuestas) {
+					for (int i = 0; i < ListaAtracciones.length; i++) {
+						if (a.getNombre().equals(ListaAtracciones[i])) {
+						promo.add(a);
+						System.out.println(promo);
+						}
+					}
 				}
-				}
-
-				Promocion pr = new DescuentoPorcentaje(nombrePromo, tipoAtraccion1, cantAtracciones, descuento, promo);
-
-				if (!promociones.contains(pr))
-					promociones.add(pr);
+				Promocion pr = new DescuentoPorcentaje(nombrePromo, 
+						tipoAtraccion1, cantAtracciones, descuento, promo);
+				
+					propuestas.add(pr);
+				System.out.println(propuestas);
 			}
-		} catch (FileNotFoundException e) {
+
+			sc.close();
+
+		} catch (
+
+		FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (InputMismatchException e) {
 			System.err.println(e.getMessage());
 		}
-		return promociones;
-
-	}*/
+		return propuestas;
+	}
 
 	public static void escribirPropuesta(List<Propuestas> propuestas) {
 		File f = new File("archivos/atraccionOUT.txt");
