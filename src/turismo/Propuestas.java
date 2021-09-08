@@ -31,19 +31,19 @@ public class Propuestas {
 	}
 
 	public double getTiempo() {
-		return tiempo;
+		return this.tiempo;
 	}
 
 	public int getCupo() {
-		return cupo;
+		return this.cupo;
 	}
 
 	public TipoAtraccion getTipo() {
-		return tipo;
+		return this.tipo;
 	}
 	
 	public String getNombre() {
-		return nombrePropuesta;
+		return this.nombrePropuesta;
 	}
 	@Override
 	public int hashCode() {

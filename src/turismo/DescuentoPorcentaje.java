@@ -10,7 +10,8 @@ public class DescuentoPorcentaje extends Promocion {
 			int cantAtracciones, double descuento, List<Propuestas> promo) {
 		super(nombrePropuesta, tipo, cantAtracciones);
 		this.descuento = descuento;
-		this.promo = new ArrayList<Propuestas>(); 
+		this.promo = (ArrayList<Propuestas>) promo; 
+		this.cantAtracciones = cantAtracciones;
 	}
 
 	public double getDescuento() {
@@ -52,5 +53,20 @@ public class DescuentoPorcentaje extends Promocion {
 				+ cantAtracciones + "; Descuento: " + (100- (descuento*100)) + "%";
 	}
 	
+	public int getCosto() {
+		return calcularCosto();
+	}
+
+	public double getTiempo() {
+		return calcularTiempo();
+	}
+
+	public int getCupo() {
+		return calcularCupo();
+	}
+
+	public TipoAtraccion getTipo() {
+		return this.tipo;
+	}
 	
 }
