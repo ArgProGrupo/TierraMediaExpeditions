@@ -5,10 +5,10 @@ import java.util.List;
 public class DescuentoAbsoluto extends Promocion {
 	
 	
-	public DescuentoAbsoluto(List<Atraccion> atracciones, String nombrePropuesta, int costo, double tiempo, int cupo,
+	/*public DescuentoAbsoluto(List<Atraccion> atracciones, String nombrePropuesta, int costo, double tiempo, int cupo,
 			TipoAtraccion tipo) {
 		super(atracciones, nombrePropuesta, costo, tiempo, cupo, tipo);
-	}
+	}*/
 	
     // HEAD
 	/*public DescuentoAbsoluto(List<Atraccion> atracciones, String nombrePropuesta) {
