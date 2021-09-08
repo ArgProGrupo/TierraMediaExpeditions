@@ -68,5 +68,24 @@ public class DescuentoPorcentaje extends Promocion {
 	public TipoAtraccion getTipo() {
 		return this.tipo;
 	}
+	public String getAtracciones() {
+		Propuestas p = null;
+		for(int i = 0; i < cantAtracciones; i++)
+		p = promo.get(i);
+		return p.getNombre();
+	}
 	
+	
+	@Override
+	public int restarCupo() {
+		for(Propuestas p : promo)
+		 if(p.cupo > 0) {
+				p.cupo = p.getCupo();
+		p.cupo --;
+		System.out.println("El cupo disponible para "+ p.getNombre() + " es de " + 
+		p.cupo+".");
+		}
+		System.out.println( "------------------------");
+		return calcularCupo();
+	}
 }

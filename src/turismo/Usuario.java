@@ -88,8 +88,21 @@ public class Usuario { // implements Comparable<Atraccion> {
 	      }
 		return false;
 }
+	/* 	public boolean puedeComprar(Propuestas propuesta) {
+	if (this.getPresupuesto() >= propuesta.getCosto() && this.getPresupuesto() >= 0
+			&& this.getTiempo() >= propuesta.getTiempo() && 
+			this.getTiempo() >= 0 && propuesta.getCupo() > 0) {
+		for (Propuestas p : itinerarioUsuario) {
+			if ((propuesta.getAtracciones().equals(p.getNombre()))) {
+				return false;
+			}
+		}
+		if (!itinerarioUsuario.contains(propuesta))
+			return true;
+	}
+	return false;
+} */
 	
-	//&& !itinerarioUsuario.contains(propuesta)
 
 	public void comprarPropuesta(Propuestas propuesta) {
 		if (puedeComprar(propuesta)) {

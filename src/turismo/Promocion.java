@@ -23,4 +23,6 @@ public abstract class Promocion extends Propuestas{
 	public abstract double calcularTiempo();
 	
 	public abstract int calcularCupo();
+
+	protected abstract String getAtracciones();
 }

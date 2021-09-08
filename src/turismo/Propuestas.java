@@ -74,4 +74,8 @@ public class Propuestas {
 		return cupo;
 		
 }
+
+	protected String getAtracciones() {
+		return null;
+	}
 }
