@@ -76,7 +76,4 @@ public abstract class Propuestas {
 }
 	protected abstract boolean esOContiene(Propuestas propuesta);
 
-	protected String getAtracciones() {
-		return null;
-	}
 }

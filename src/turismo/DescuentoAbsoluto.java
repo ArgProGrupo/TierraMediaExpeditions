@@ -1,14 +1,18 @@
 package turismo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DescuentoAbsoluto extends Promocion {
 	private int descuento;
 
 
-	public DescuentoAbsoluto(String nombrePropuesta, int costo, double tiempo,
-			int cupo, TipoAtraccion tipo, int cantAtracciones, int descuento) {
-		super(nombrePropuesta, tipo, descuento);
+	public DescuentoAbsoluto(String nombrePropuesta, TipoAtraccion tipo, 
+			int cantAtracciones, int descuento,
+			List<Propuestas> promo) {
+		super(nombrePropuesta, tipo, cantAtracciones);
 		this.descuento = descuento;
-		Atraccion[] atracciones = new Atraccion[cantAtracciones];
+		this.promo = (ArrayList<Propuestas>) promo;
 	}
 	
 	private int getDescuento() {
@@ -17,36 +21,24 @@ public class DescuentoAbsoluto extends Promocion {
 
 	@Override
 	public int calcularCosto() {
-		int costopromo = 0;
-		for(Propuestas p: promo) {
-			costopromo += p.getCosto();
-	}
-		return this.costo = (int) (costopromo - getDescuento());
+		return (super.calcularCosto() - this.descuento);
 	}
 
 	@Override
 	public double calcularTiempo() {
-		double tiempototal = 0;
-		for(Propuestas p : promo) {
-			tiempototal += p.getTiempo();
-		}
-		return this.tiempo = tiempototal;
+		return super.calcularTiempo();
 	}
 
 	@Override
 	public int calcularCupo() {
-		int cupoMaximo = 100;
-		for (Propuestas p : promo) {
-			if(cupoMaximo > p.getCupo())
-				cupoMaximo = p.getCupo();
-		}
-		return cupoMaximo;
+		return super.calcularCupo();
 	}
+	
 	@Override
 	public String toString() {
 		return "Promocion: " + nombrePropuesta + "; Costo: " + calcularCosto() + "; Tiempo: "
 	+ calcularTiempo() + "; Cupo: " + calcularCupo() + "; Cantidad de atracciones: "  
-				+ cantAtracciones + "; Descuento: " + descuento +" Monedas de oro";
+				+ cantAtracciones + "; Descuento: " + getDescuento() +" Monedas de oro";
 	}
 	
 	public int getCosto() {
@@ -63,11 +55,5 @@ public class DescuentoAbsoluto extends Promocion {
 
 	public TipoAtraccion getTipo() {
 		return this.tipo;
-	}
-	public String getAtracciones() {
-		Propuestas p = null;
-		for(int i = 0; i < cantAtracciones; i++)
-		p = promo.get(i);
-		return p.getNombre();
 	}
 }

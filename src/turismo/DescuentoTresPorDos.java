@@ -1,46 +1,48 @@
 package turismo;
 
 import java.util.ArrayList;
+import java.util.List;
+
+import administradorDeArchivos.ListaPropuestas;
 
 public class DescuentoTresPorDos extends Promocion {
-	private Atraccion atraccionGratis;
+	public Propuestas atraccionGratis;
 
-	public DescuentoTresPorDos(String nombrePropuesta, int costo, double tiempo, int cupo, TipoAtraccion tipo,
-			int cantAtracciones) {
+	public DescuentoTresPorDos(String nombrePropuesta,TipoAtraccion tipo,
+			int cantAtracciones, Propuestas atraccionGratis, List<Propuestas> promo) {
 		super(nombrePropuesta, tipo, cantAtracciones);
-		this.promo = (ArrayList<Propuestas>) promo; 
+		this.promo = (ArrayList<Propuestas>) promo;
+		this.atraccionGratis = atraccionGratis;
 	}
 
-	public Atraccion getAtraccionGratis() {
+	public Propuestas getAtraccionGratis() {
+		List<Propuestas> propuestas = new ArrayList<Propuestas>();
+		ListaPropuestas.leerAtraccion();
+		for (Propuestas a : propuestas) {
+			if (a.getNombre().equals(atraccionGratis)) {
+				
+					System.out.println(promo);
+				
+			}
+		}
 		return atraccionGratis;
 	}
 
 	@Override
 	public int calcularCosto() {
-		int costopromo = 0;
-		for (Propuestas p : promo) {
-			costopromo += p.getCosto();
-		}
-		return this.costo = (int) (costopromo - getDescuento());
+		return (super.calcularCosto());
 	}
 
 	@Override
 	public int calcularCupo() {
-		int cupoMaximo = 100;
-		for (Propuestas p : promo) {
-			if (cupoMaximo > p.getCupo())
-				cupoMaximo = p.getCupo();
-		}
-		return cupoMaximo;
+		if(super.calcularCupo() >= atraccionGratis.getCupo()) 
+			return atraccionGratis.getCupo();
+		else return super.calcularCupo();
 	}
 
 	@Override
 	public double calcularTiempo() {
-		double tiempototal = 0;
-		for (Propuestas p : promo) {
-			tiempototal += p.getTiempo();
-		}
-		return this.tiempo = tiempototal;
+		return super.calcularTiempo();
 	}
 
 	public int getCosto() {
@@ -59,25 +61,11 @@ public class DescuentoTresPorDos extends Promocion {
 		return this.tipo;
 	}
 
-	public String getAtracciones() {
-		Propuestas p = null;
-		for (int i = 0; i < cantAtracciones; i++)
-			p = promo.get(i);
-		return p.getNombre();
-	}
-
 	@Override
 	public String toString() {
-		return "Promocion: " + nombrePropuesta + "; Costo: " + calcularCosto() + "; Tiempo: " + calcularTiempo()
-				+ "; Cupo: " + calcularCupo() + "; Cantidad de atracciones: " + cantAtracciones + "; Descuento: "
-				+ descuento + " Monedas de oro";
+		return "Promocion: " + nombrePropuesta + "; Costo: " + calcularCosto() +
+				"; Tiempo: " + calcularTiempo() + "; Cupo: " + calcularCupo() + 
+				"; Cantidad de atracciones: " +	cantAtracciones + 
+				"; Atraccion de regalo: "	+ atraccionGratis.getNombre();
 	}
-
-	@Override
-	protected boolean esOContiene(Propuestas propuesta) {
-		if (this.promo.contains(propuesta))
-		return false;
-		else return true;
-	}
-
 }
