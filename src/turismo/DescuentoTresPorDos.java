@@ -1,12 +1,14 @@
 package turismo;
 
+import java.util.ArrayList;
+
 public class DescuentoTresPorDos extends Promocion {
 	private Atraccion atraccionGratis;
 
 	public DescuentoTresPorDos(String nombrePropuesta, int costo, double tiempo, int cupo, TipoAtraccion tipo,
 			int cantAtracciones) {
 		super(nombrePropuesta, tipo, cantAtracciones);
-		Atraccion[] atracciones = new Atraccion[cantAtracciones];
+		this.promo = (ArrayList<Propuestas>) promo; 
 	}
 
 	public Atraccion getAtraccionGratis() {
@@ -72,9 +74,10 @@ public class DescuentoTresPorDos extends Promocion {
 	}
 
 	@Override
-	protected boolean esOContiene() {
-		// TODO Auto-generated method stub
+	protected boolean esOContiene(Propuestas propuesta) {
+		if (this.promo.contains(propuesta))
 		return false;
+		else return true;
 	}
 
 }

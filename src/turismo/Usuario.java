@@ -92,7 +92,7 @@ public class Usuario { // implements Comparable<Atraccion> {
 					}
 				}
 			}
-			return false;
+			return true;
 		}
 		return false;
 	}
@@ -117,6 +117,7 @@ public class Usuario { // implements Comparable<Atraccion> {
 
 
 	public boolean tieneTiempoYDinero() {
-		return (this.getPresupuesto() > 0 && this.getTiempo() > 0);
+		if(this.getPresupuesto() > 0 && this.getTiempo() > 0) return true;
+		else return false;
 	}
 }
