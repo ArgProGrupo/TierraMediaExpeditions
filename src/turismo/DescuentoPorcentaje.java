@@ -24,7 +24,7 @@ public class DescuentoPorcentaje extends Promocion {
 		for(Propuestas p: promo) {
 			costopromo += p.getCosto();
 	}
-		return this.costo = (int) (costopromo* getDescuento());
+		return this.costo = (int) (costopromo - getDescuento());
 	}
 
 	@Override
@@ -87,5 +87,11 @@ public class DescuentoPorcentaje extends Promocion {
 		}
 		System.out.println( "------------------------");
 		return calcularCupo();
+	}
+
+	@Override
+	protected boolean esOContiene() {
+		
+		return false;
 	}
 }

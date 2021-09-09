@@ -2,7 +2,7 @@ package turismo;
 
 import java.util.Objects;
 
-public class Propuestas {
+public abstract class Propuestas {
 	protected String nombrePropuesta;
 	protected int costo;
 	protected double tiempo;
@@ -74,6 +74,7 @@ public class Propuestas {
 		return cupo;
 		
 }
+	protected abstract boolean esOContiene(Propuestas propuesta);
 
 	protected String getAtracciones() {
 		return null;
