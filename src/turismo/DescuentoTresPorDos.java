@@ -8,31 +8,73 @@ public class DescuentoTresPorDos extends Promocion {
 		super(nombrePropuesta, tipo, cantAtracciones);
 		Atraccion[] atracciones = new Atraccion[cantAtracciones];
 	}
-	
 
 	public Atraccion getAtraccionGratis() {
 		return atraccionGratis;
 	}
 
 	@Override
-	public void calcularCosto() {
-		this.costo = (int) ((atracciones[0].getCosto() + atracciones[1].getCosto()));
-
-	}
-
-	@Override
-	public void calcularTiempo() {
-		this.tiempo = atracciones[0].getTiempo() + atracciones[1].getTiempo() + atracciones[2].getTiempo();
+	public int calcularCosto() {
+		int costopromo = 0;
+		for (Propuestas p : promo) {
+			costopromo += p.getCosto();
+		}
+		return this.costo = (int) (costopromo - getDescuento());
 	}
 
 	@Override
 	public int calcularCupo() {
-		if (atracciones[0].getCupo() > atracciones[1].getCupo() && 
-				atracciones[0].getCupo() > atracciones[2].getCupo())
-			return atracciones[0].getCupo();
-		else if (atracciones[1].getCupo() > atracciones[2].getCupo())
-			return atracciones[1].getCupo();
-		else
-			return atracciones[3].getCupo();
-	}	
+		int cupoMaximo = 100;
+		for (Propuestas p : promo) {
+			if (cupoMaximo > p.getCupo())
+				cupoMaximo = p.getCupo();
+		}
+		return cupoMaximo;
+	}
+
+	@Override
+	public double calcularTiempo() {
+		double tiempototal = 0;
+		for (Propuestas p : promo) {
+			tiempototal += p.getTiempo();
+		}
+		return this.tiempo = tiempototal;
+	}
+
+	public int getCosto() {
+		return calcularCosto();
+	}
+
+	public double getTiempo() {
+		return calcularTiempo();
+	}
+
+	public int getCupo() {
+		return calcularCupo();
+	}
+
+	public TipoAtraccion getTipo() {
+		return this.tipo;
+	}
+
+	public String getAtracciones() {
+		Propuestas p = null;
+		for (int i = 0; i < cantAtracciones; i++)
+			p = promo.get(i);
+		return p.getNombre();
+	}
+
+	@Override
+	public String toString() {
+		return "Promocion: " + nombrePropuesta + "; Costo: " + calcularCosto() + "; Tiempo: " + calcularTiempo()
+				+ "; Cupo: " + calcularCupo() + "; Cantidad de atracciones: " + cantAtracciones + "; Descuento: "
+				+ descuento + " Monedas de oro";
+	}
+
+	@Override
+	protected boolean esOContiene() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 }

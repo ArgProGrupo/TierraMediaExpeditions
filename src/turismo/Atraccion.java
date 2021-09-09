@@ -12,5 +12,10 @@ public class Atraccion extends Propuestas{
 				"; Tiempo: "+this.tiempo+"; Cupo: "+this.getCupo() + 
 				"; Tipo De Atraccion: " + this.tipo;
 	}
-
+	@Override
+	protected boolean esOContiene(Propuestas propuesta) {
+		if(this.equals(propuesta))
+		return true;
+		return false;
+	}
 }

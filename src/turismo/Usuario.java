@@ -11,16 +11,14 @@ public class Usuario { // implements Comparable<Atraccion> {
 	public double tiempoDisponible;
 	public TipoAtraccion atraccionFavorita;
 	public ArrayList<Propuestas> itinerarioUsuario;
-	
 
-	public Usuario(String nombre, int presupuesto, double tiempoDisponible, 
-			TipoAtraccion atraccionFavorita) {
+	public Usuario(String nombre, int presupuesto, double tiempoDisponible, TipoAtraccion atraccionFavorita) {
 		this.nombre = nombre;
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
 		this.atraccionFavorita = atraccionFavorita;
 		this.itinerarioUsuario = new ArrayList<Propuestas>();
-		
+
 	}
 
 	// getters
@@ -39,66 +37,86 @@ public class Usuario { // implements Comparable<Atraccion> {
 	public TipoAtraccion getTipoAtraccionFavorita() {
 		return this.atraccionFavorita;
 	}
-	
+
 	public void itinerarioUsuario(List<Propuestas> itinerario) {
-			File f = new File("archivos/itinerarioUsuario.txt");
-			
-			PrintWriter pw;
+		File f = new File("archivos/itinerarioUsuario.txt");
 
-			try {
-				pw = new PrintWriter(f);
+		PrintWriter pw;
 
-				for (Propuestas v : itinerario)
-					pw.write(v.toString() + "\n");
+		try {
+			pw = new PrintWriter(f);
 
-				pw.close();
-			} catch (FileNotFoundException e) {
-				System.err.println(e.getMessage());
-			}
+			for (Propuestas v : itinerario)
+				pw.write(v.toString() + "\n");
+
+			pw.close();
+		} catch (FileNotFoundException e) {
+			System.err.println(e.getMessage());
 		}
-	
+	}
+
 	public String getItinerarioString() {
 		String itinerario = "";
-		if(itinerario == "") {
-		for(Propuestas p: itinerarioUsuario) itinerario += p + "\n";
-		} else itinerario = "";
+		if (itinerario == "") {
+			for (Propuestas p : itinerarioUsuario)
+				itinerario += p + "\n";
+		} else
+			itinerario = "";
 		return itinerario;
-		
+
 	}
 
 	@Override
 	public String toString() {
-		return "Nombre: " + nombre + " | Presupuesto: " + presupuesto + 
-				" | Tiempo Disponible: " + tiempoDisponible
-				+ " | Atraccion Favorita: " + atraccionFavorita ;
+		return "Nombre: " + nombre + " | Presupuesto: " + presupuesto + " | Tiempo Disponible: " + tiempoDisponible
+				+ " | Atraccion Favorita: " + atraccionFavorita;
 	}
 
 	// PROBAR QUE LEA EL ARCHIVO ITINERARIO CON METODOS QUE ESTAN EN LISTAUSUARIOS Y
 	// LISTA PROPUESTAS
-	
 
 	public boolean puedeComprar(Propuestas propuesta) {
-	      if(this.getPresupuesto() >= propuesta.getCosto() && this.getPresupuesto() >= 0 && 
-			this.getTiempo() >= propuesta.getTiempo() && this.getTiempo() >= 0  
-			&& propuesta.getCupo() > 0) {
-	    	 if (itinerarioUsuario == null)
-	    		  return true;
-	    	  else if(!itinerarioUsuario.contains(propuesta));
-	    	  return true;
-	      }
+		if (this.getPresupuesto() >= propuesta.getCosto() && this.getTiempo() >= propuesta.getTiempo()
+				&& propuesta.getCupo() > 0) {
+			if (propuesta.esPromo) {
+				for (Propuestas p : itinerarioUsuario) {
+					if (p.equals(propuesta))
+						return true;
+				}
+			} else {
+				if (itinerarioUsuario.contains(propuesta)) {
+					return true;
+				} else {
+					for (Propuestas p : itinerarioUsuario) {
+						
+					}
+				}
+			}
+			return false;
+		}
 		return false;
-}
-	
-	//&& !itinerarioUsuario.contains(propuesta)
+	}
+	/*
+	 * public boolean puedeComprar(Propuestas propuesta) { if (this.getPresupuesto()
+	 * >= propuesta.getCosto() && this.getPresupuesto() >= 0 && this.getTiempo() >=
+	 * propuesta.getTiempo() && this.getTiempo() >= 0 && propuesta.getCupo() > 0) {
+	 * for (Propuestas p : itinerarioUsuario) { if
+	 * ((propuesta.getAtracciones().equals(p.getNombre()))) { return false; } } if
+	 * (!itinerarioUsuario.contains(propuesta)) return true; } return false; }
+	 */
 
 	public void comprarPropuesta(Propuestas propuesta) {
 		if (puedeComprar(propuesta)) {
 			this.presupuesto -= propuesta.getCosto();
 			this.tiempoDisponible -= propuesta.getTiempo();
 			itinerarioUsuario.add(propuesta);
-		
-		System.out.println("Te quedan " + this.presupuesto + " monedas y " + 
-		this.tiempoDisponible + " horas");
+
+			System.out.println("Te quedan " + this.presupuesto + " monedas y " + this.tiempoDisponible + " horas");
 		}
+	}
+
+
+	public boolean tieneTiempoYDinero() {
+		return (this.getPresupuesto() > 0 && this.getTiempo() > 0);
 	}
 }
