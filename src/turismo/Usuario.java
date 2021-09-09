@@ -95,6 +95,7 @@ public class Usuario { // implements Comparable<Atraccion> {
 			return true;
 		}
 		return false;
+
 	}
 	/*
 	 * public boolean puedeComprar(Propuestas propuesta) { if (this.getPresupuesto()
