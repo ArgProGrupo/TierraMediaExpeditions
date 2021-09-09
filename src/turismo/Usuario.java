@@ -87,8 +87,8 @@ public class Usuario { // implements Comparable<Atraccion> {
 				if (itinerarioUsuario.contains(propuesta)) {
 					return true;
 				} else {
-					for (Propuestas p : itinerarioUsuario) {
-						
+					for (Propuestas p : itinerarioUsuario) { 
+							return (p.esOContiene(propuesta));
 					}
 				}
 			}

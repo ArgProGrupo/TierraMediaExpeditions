@@ -21,5 +21,8 @@ public abstract class Promocion extends Propuestas{
 
 	protected abstract String getAtracciones();
 	
-	
+	@Override
+	protected boolean esOContiene(Propuestas propuesta) {
+		return(this.promo.contains(propuesta));
+	}
 }
