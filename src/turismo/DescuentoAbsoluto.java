@@ -70,4 +70,10 @@ public class DescuentoAbsoluto extends Promocion {
 		p = promo.get(i);
 		return p.getNombre();
 	}
+
+	@Override
+	protected boolean esOContiene(Propuestas propuesta) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
