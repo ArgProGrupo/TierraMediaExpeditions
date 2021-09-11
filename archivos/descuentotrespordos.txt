@@ -1,1 +1,8 @@
-Pack PAISAJE,PAISAJE,3,Minas Tirith,el Abismo de Helm,Erebor,
+Propuesta: Mordor; Costo: 25; Tiempo: 3.0; Cupo: 4; Tipo De Atraccion: AVENTURA
+Propuesta: Moria; Costo: 10; Tiempo: 2.0; Cupo: 5; Tipo De Atraccion: AVENTURA
+Propuesta: Bosque Negro; Costo: 3; Tiempo: 4.0; Cupo: 12; Tipo De Atraccion: AVENTURA
+Propuesta: Lothlórien; Costo: 35; Tiempo: 1.0; Cupo: 30; Tipo De Atraccion: DEGUSTACION
+Propuesta: Erebor; Costo: 12; Tiempo: 3.0; Cupo: 32; Tipo De Atraccion: PAISAJE
+Propuesta: Minas Tirith; Costo: 5; Tiempo: 2.5; Cupo: 25; Tipo De Atraccion: PAISAJE
+Propuesta: Abismo de Helm; Costo: 5; Tiempo: 2.0; Cupo: 15; Tipo De Atraccion: PAISAJE
+Propuesta: La Comarca; Costo: 3; Tiempo: 6.5; Cupo: 50; Tipo De Atraccion: DEGUSTACION
