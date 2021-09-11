@@ -13,7 +13,9 @@ public class App {
 		propuestas = ListaPropuestas.leerAtraccion();
 		usuarios = ListaDeUsuarios.leerUsuarios();
 		Scanner scanner = new Scanner(System.in);
-		
+		// Unificar constructores de promociones
+		// Lord Facu acepta el pack y no ofrece nada mas
+		// Cambiar sanners de las distintas promociones 
 		for (Usuario u : usuarios) {
 			System.out.println("\nPROPUESTAS ORDENADAS POR PREFERENCIA PARA USUARIO:\n");
 			System.out.println(u);

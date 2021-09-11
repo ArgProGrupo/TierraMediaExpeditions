@@ -1,1 +1,1 @@
-Pack PAISAJE,PAISAJE,3,Minas Tirith,el Abismo de Helm,Erebor,
+Pack PAISAJE-PAISAJE-3-0-,Minas Tirith,Abismo de Helm,Erebor

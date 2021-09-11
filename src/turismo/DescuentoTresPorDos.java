@@ -1,6 +1,7 @@
 package turismo;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DescuentoTresPorDos extends Promocion {
 	private Atraccion atraccionGratis;
@@ -10,37 +11,31 @@ public class DescuentoTresPorDos extends Promocion {
 		super(nombrePropuesta, tipo, cantAtracciones);
 		this.promo = (ArrayList<Propuestas>) promo; 
 	}
-
+	
+	//Probar distintos constructores
+	
+	public DescuentoTresPorDos(String nombrePropuesta, TipoAtraccion tipo, List<Propuestas> promo) {
+		super(nombrePropuesta, tipo, cantAtracciones);
+		this.promo = (ArrayList<Propuestas>) promo;
+	}
+	
 	public Atraccion getAtraccionGratis() {
 		return atraccionGratis;
 	}
 
 	@Override
 	public int calcularCosto() {
-		int costopromo = 0;
-		for (Propuestas p : promo) {
-			costopromo += p.getCosto();
-		}
-		return this.costo = (int) (costopromo - getDescuento());
+		return super.calcularCosto();
 	}
 
 	@Override
 	public int calcularCupo() {
-		int cupoMaximo = 100;
-		for (Propuestas p : promo) {
-			if (cupoMaximo > p.getCupo())
-				cupoMaximo = p.getCupo();
-		}
-		return cupoMaximo;
+		return super.calcularCupo();
 	}
 
 	@Override
 	public double calcularTiempo() {
-		double tiempototal = 0;
-		for (Propuestas p : promo) {
-			tiempototal += p.getTiempo();
-		}
-		return this.tiempo = tiempototal;
+		return super.calcularTiempo();
 	}
 
 	public int getCosto() {

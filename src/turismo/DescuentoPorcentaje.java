@@ -20,30 +20,17 @@ public class DescuentoPorcentaje extends Promocion {
 
 	@Override
 	public int calcularCosto() {
-		int costopromo = 0;
-		for (Propuestas p : promo) {
-			costopromo += p.getCosto();
-		}
-		return this.costo = (int) (costopromo - getDescuento());
+		return super.calcularCosto();
 	}
 
 	@Override
 	public double calcularTiempo() {
-		double tiempototal = 0;
-		for (Propuestas p : promo) {
-			tiempototal += p.getTiempo();
-		}
-		return this.tiempo = tiempototal;
+		return super.calcularTiempo();
 	}
 
 	@Override
 	public int calcularCupo() {
-		int cupoMaximo = 100;
-		for (Propuestas p : promo) {
-			if (cupoMaximo > p.getCupo())
-				cupoMaximo = p.getCupo();
-		}
-		return cupoMaximo;
+		return super.calcularCupo();
 	}
 
 	@Override

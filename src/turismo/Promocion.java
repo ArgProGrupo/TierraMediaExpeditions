@@ -13,12 +13,31 @@ public abstract class Promocion extends Propuestas{
 		this.esPromo = true;
 	}
 
-	public abstract int calcularCosto();
+	public int calcularCosto() {
+		int costopromo = 0;
+		for (Propuestas p : promo) {
+			costopromo += p.getCosto();
+		}
+		return costopromo;
+	}
 	
-	public abstract double calcularTiempo();
+	public double calcularTiempo() {
+		double tiempototal = 0;
+		for (Propuestas p : promo) {
+			tiempototal += p.getTiempo();
+		}
+		return this.tiempo = tiempototal;
+	}
 	
-	public abstract int calcularCupo();
-
+	public int calcularCupo() {
+		int cupoMaximo = 100;
+		for (Propuestas p : promo) {
+			if (cupoMaximo > p.getCupo())
+				cupoMaximo = p.getCupo();
+		}
+		return cupoMaximo;
+	}
+	
 	protected abstract String getAtracciones();
 	
 	@Override

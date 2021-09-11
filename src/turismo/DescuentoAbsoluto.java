@@ -7,18 +7,21 @@ public class DescuentoAbsoluto extends Promocion {
 	private int descuento;
 
 
-	/*public DescuentoAbsoluto(String nombrePropuesta, int costo, double tiempo,
+	public DescuentoAbsoluto(String nombrePropuesta, int costo, double tiempo,
 			int cupo, TipoAtraccion tipo, int cantAtracciones, int descuento) {
 		super(nombrePropuesta, tipo, descuento);
 		this.descuento = descuento;
 		Atraccion[] atracciones = new Atraccion[cantAtracciones];
-	}*/
+	}
+	
+	//Probar distintos constructores
 	
 	public DescuentoAbsoluto(String nombrePropuesta, TipoAtraccion tipo, int descuento,
 			List<Propuestas> promo) {
 		super(nombrePropuesta, tipo, cantAtracciones);
 		this.descuento = descuento;
 		this.promo = (ArrayList<Propuestas>) promo;
+	}
 	
 	private int getDescuento() {
 		return descuento;
@@ -26,30 +29,17 @@ public class DescuentoAbsoluto extends Promocion {
 
 	@Override
 	public int calcularCosto() {
-		int costopromo = 0;
-		for(Propuestas p: promo) {
-			costopromo += p.getCosto();
-	}
-		return this.costo = (int) (costopromo - getDescuento());
+		return super.calcularCosto();
 	}
 
 	@Override
 	public double calcularTiempo() {
-		double tiempototal = 0;
-		for(Propuestas p : promo) {
-			tiempototal += p.getTiempo();
-		}
-		return this.tiempo = tiempototal;
+		return super.calcularTiempo();
 	}
 
 	@Override
 	public int calcularCupo() {
-		int cupoMaximo = 100;
-		for (Propuestas p : promo) {
-			if(cupoMaximo > p.getCupo())
-				cupoMaximo = p.getCupo();
-		}
-		return cupoMaximo;
+		return super.calcularCupo();
 	}
 	@Override
 	public String toString() {
