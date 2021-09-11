@@ -1,15 +1,24 @@
 package turismo;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class DescuentoAbsoluto extends Promocion {
 	private int descuento;
 
 
-	public DescuentoAbsoluto(String nombrePropuesta, int costo, double tiempo,
+	/*public DescuentoAbsoluto(String nombrePropuesta, int costo, double tiempo,
 			int cupo, TipoAtraccion tipo, int cantAtracciones, int descuento) {
 		super(nombrePropuesta, tipo, descuento);
 		this.descuento = descuento;
 		Atraccion[] atracciones = new Atraccion[cantAtracciones];
-	}
+	}*/
+	
+	public DescuentoAbsoluto(String nombrePropuesta, TipoAtraccion tipo, int descuento,
+			List<Propuestas> promo) {
+		super(nombrePropuesta, tipo, cantAtracciones);
+		this.descuento = descuento;
+		this.promo = (ArrayList<Propuestas>) promo;
 	
 	private int getDescuento() {
 		return descuento;

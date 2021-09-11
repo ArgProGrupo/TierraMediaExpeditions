@@ -19,6 +19,7 @@ public class ListaPropuestas {
 		Scanner sc = null;
 		File f = new File("archivos/Atracciones.txt");
 		File f1 = new File("archivos/descuentoporcentaje.txt");
+		File f2 = new File("archivos/descuentoabsoluto.txt");
 
 		try {
 			sc = new Scanner(f);
@@ -62,6 +63,40 @@ public class ListaPropuestas {
 				}
 				Promocion pr = new DescuentoPorcentaje(nombrePromo, 
 						tipoAtraccion1, cantAtracciones, descuento, promo);
+				
+					propuestas.add(pr);
+				System.out.println(propuestas);
+			}
+
+			sc.close();
+			
+			sc = new Scanner(f2);
+
+			while (sc.hasNext()) {
+				String linea1 = sc.nextLine();
+				String[] datosPromo = linea1.split("-");
+				String nombrePromo = datosPromo[0];
+				TipoAtraccion tipoAtraccion1 = TipoAtraccion.valueOf(datosPromo[1]);
+				int cantAtracciones = Integer.parseInt(datosPromo[2]);
+				double descuento = Double.parseDouble(datosPromo[3]);
+				List<Propuestas> promo = new ArrayList<Propuestas>();
+				
+				String[] linea2 = datosPromo;
+				String[] ListaAtracciones = linea2[4].split(",");
+				for (Propuestas a : propuestas) {
+					for (int i = 0; i < ListaAtracciones.length; i++) {
+						if (a.getNombre().equals(ListaAtracciones[i])) {
+						promo.add(a);
+						System.out.println(promo);
+						}
+					}
+				}
+				
+				Promocion pr = new DescuentoAbsoluto(nombrePromo, 
+						tipoAtraccion1, cantAtracciones, descuento, promo);
+				
+				String nombrePropuesta, int costo, double tiempo,
+				int cupo, TipoAtraccion tipo, int cantAtracciones, int descuento
 				
 					propuestas.add(pr);
 				System.out.println(propuestas);
