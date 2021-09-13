@@ -12,7 +12,7 @@ public class DescuentoPorcentaje extends Promocion {
 		super(nombrePropuesta, tipo, cantAtracciones);
 		this.descuento = descuento;
 		this.promo = (ArrayList<Propuestas>) promo;
-		this.cantAtracciones = cantAtracciones;
+		DescuentoPorcentaje.cantAtracciones = cantAtracciones;
 	}
 
 	public double getDescuento() {

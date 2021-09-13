@@ -3,7 +3,7 @@ package turismo;
 import java.io.*;
 import java.util.*;
 
-public class Usuario { // implements Comparable<Atraccion> {
+public class Usuario {
 
 	// atributos
 	public String nombre;
@@ -72,9 +72,6 @@ public class Usuario { // implements Comparable<Atraccion> {
 				+ " | Atraccion Favorita: " + atraccionFavorita;
 	}
 
-	// PROBAR QUE LEA EL ARCHIVO ITINERARIO CON METODOS QUE ESTAN EN LISTAUSUARIOS Y
-	// LISTA PROPUESTAS
-
 	public boolean puedeComprar(Propuestas propuesta) {
 		if (this.getPresupuesto() >= propuesta.getCosto() && this.getTiempo() >= propuesta.getTiempo()
 				&& propuesta.getCupo() > 0) {
@@ -87,8 +84,8 @@ public class Usuario { // implements Comparable<Atraccion> {
 				if (itinerarioUsuario.contains(propuesta)) {
 					return true;
 				} else {
-					for (Propuestas p : itinerarioUsuario) { 
-							return (p.esOContiene(propuesta));
+					for (Propuestas p : itinerarioUsuario) {
+						return (p.esOContiene(propuesta));
 					}
 				}
 			}
@@ -96,14 +93,6 @@ public class Usuario { // implements Comparable<Atraccion> {
 		}
 		return false;
 	}
-	/*
-	 * public boolean puedeComprar(Propuestas propuesta) { if (this.getPresupuesto()
-	 * >= propuesta.getCosto() && this.getPresupuesto() >= 0 && this.getTiempo() >=
-	 * propuesta.getTiempo() && this.getTiempo() >= 0 && propuesta.getCupo() > 0) {
-	 * for (Propuestas p : itinerarioUsuario) { if
-	 * ((propuesta.getAtracciones().equals(p.getNombre()))) { return false; } } if
-	 * (!itinerarioUsuario.contains(propuesta)) return true; } return false; }
-	 */
 
 	public void comprarPropuesta(Propuestas propuesta) {
 		if (puedeComprar(propuesta)) {
@@ -116,7 +105,9 @@ public class Usuario { // implements Comparable<Atraccion> {
 	}
 
 	public boolean tieneTiempoYDinero() {
-		if(this.getPresupuesto() > 0 && this.getTiempo() > 0) return true;
-		else return false;
+		if (this.getPresupuesto() > 0 && this.getTiempo() > 0)
+			return true;
+		else
+			return false;
 	}
 }
