@@ -69,6 +69,7 @@ public class UsuarioTests {
 		u1.comprarPropuesta(a4);
 		assertEquals(100, u1.getPresupuesto());
 		assertEquals(10, u1.getTiempo(), 0);
+		assertFalse(u1.puedeComprar(a4));
 	}
 
 }
