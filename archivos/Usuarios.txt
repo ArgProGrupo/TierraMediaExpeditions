@@ -1,5 +1,5 @@
 9
-MandarinaMagma,100,11,AVENTURA
+MandarinaMagma,100,11,PAISAJE
 EncuentroDeTrovadores,100,10,PAISAJE
 Lord Facu,100,10,DEGUSTACION
 Lady Ivana,100,10,PAISAJE

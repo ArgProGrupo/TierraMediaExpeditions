@@ -65,7 +65,7 @@ public class DescuentoTresPorDos extends Promocion {
 	public String toString() {
 		return "Promocion: " + nombrePropuesta + "; Costo: " + calcularCosto() +
 				"; Tiempo: " + calcularTiempo() + "; Cupo: " + calcularCupo() + 
-				"; Cantidad de atracciones: " +	cantAtracciones + 
+				"; Cantidad de atracciones: " + promo.size() + 
 				"; Atraccion de regalo: "	+ atraccionGratis.getNombre();
 	}
 }

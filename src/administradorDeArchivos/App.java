@@ -15,6 +15,9 @@ public class App {
 		Scanner scanner = new Scanner(System.in);
 		
 		for (Usuario u : usuarios) {
+			System.out.println("Bienvenido al sistema de autogestión de TierraMediaExpeditions!\n"
+					+ "A continuación podrá observar y elegir entre nuestra extensa lista de atracciones \nqué propuesta es "
+					+ "la indicada para usted y se convierta en la mejor experiencia de su vida!");
 			System.out.println("\nPROPUESTAS ORDENADAS POR PREFERENCIA PARA USUARIO:\n");
 			System.out.println(u);
 			propuestas.sort(new ComparadorDeAtracciones(u.getTipoAtraccionFavorita()));

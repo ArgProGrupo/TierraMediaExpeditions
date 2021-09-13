@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import turismo.*;
-import administradorDeArchivos.App;
+
 
 public class ListaPropuestas {
 
