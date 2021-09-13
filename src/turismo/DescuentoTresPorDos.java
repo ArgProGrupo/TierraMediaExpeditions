@@ -19,7 +19,7 @@ public class DescuentoTresPorDos extends Promocion {
 		List<Propuestas> propuestas = new ArrayList<Propuestas>();
 		ListaPropuestas.leerAtraccion();
 		for (Propuestas a : propuestas) {
-			if (a.getNombre().equals(atraccionGratis)) {
+			if (a.getNombre().equals(atraccionGratis.getNombre())) {
 				
 					System.out.println(promo);
 				
@@ -30,7 +30,7 @@ public class DescuentoTresPorDos extends Promocion {
 
 	@Override
 	public int calcularCosto() {
-		return (super.calcularCosto());
+		return (super.calcularCosto() - atraccionGratis.getCosto());
 	}
 
 	@Override

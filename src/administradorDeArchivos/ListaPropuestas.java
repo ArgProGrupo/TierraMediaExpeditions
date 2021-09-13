@@ -56,7 +56,7 @@ public class ListaPropuestas {
 					for (int i = 0; i < ListaAtracciones.length; i++) {
 						if (a.getNombre().equals(ListaAtracciones[i])) {
 							promo.add(a);
-							System.out.println(promo);
+							//System.out.println(promo);
 						}
 					}
 				}
@@ -66,17 +66,37 @@ public class ListaPropuestas {
 							promo);
 
 					propuestas.add(pr);
-					System.out.println(pr);
+					
 				} else if (tipoPromo.equals("Absoluto")) {
 					int descuento = Integer.parseInt(datosPromo[4]);
 					Promocion pr = new DescuentoAbsoluto(nombrePromo, tipoAtraccion1, cantAtracciones, descuento,
 							promo);
 
 					propuestas.add(pr);
-					System.out.println(pr);
-				} /*else if (tipoPromo.equals("TresXDos")) {
+					//System.out.println(pr);
+					
+				} else if (tipoPromo.equals("TresXDos")) {
+					Propuestas atraccionGratis = promo.get(promo.size()-1); //¿+1?
+					//List <Propuestas> nuevaPropuestas = new ArrayList<Propuestas>();
+					
+					Promocion pr2 = new DescuentoTresPorDos(nombrePromo, tipoAtraccion1, 
+							cantAtracciones, atraccionGratis, promo);
+					
+					propuestas.add(pr2);
+					//System.out.println(pr2);
+					//String atraccionGratis = ultimaAtraccion;
+					/*for (Propuestas a : propuestas) {
+						if (atraccionGratis.getNombre().equals(a.getNombre())) {
+							
+							Promocion pr2 = new DescuentoTresPorDos(nombrePromo, tipoAtraccion1, 
+									cantAtracciones, a, promo);
+							nuevaPropuestas.add(pr2);
+							System.out.println(pr2);
+						}
+						
+					}*/
 
-					for (Propuestas a : propuestas) {
+					/*for (Propuestas a : propuestas) {
 						for (int i = 0; i < ListaAtracciones.length; i++) {
 							if (a.getNombre().equals(datosPromo[4])) {
 								Propuestas atraccionGratis = null;
@@ -87,9 +107,9 @@ public class ListaPropuestas {
 								System.out.println(pr);
 							}
 						}
-					}
+					}*/
 
-				}*/
+				}
 
 			}
 

@@ -21,7 +21,7 @@ public class DescuentoPorcentaje extends Promocion {
 
 	@Override
 	public int calcularCosto() {
-		return (int) (super.calcularCosto() - (super.calcularCosto() * this.getDescuento()));
+		return (int) (super.calcularCosto() * this.getDescuento());
 	}
 
 	@Override

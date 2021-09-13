@@ -87,15 +87,14 @@ public class Usuario { // implements Comparable<Atraccion> {
 				if (itinerarioUsuario.contains(propuesta)) {
 					return true;
 				} else {
-					for (Propuestas p : itinerarioUsuario) {
-						
+					for (Propuestas p : itinerarioUsuario) { 
+							return (p.esOContiene(propuesta));
 					}
 				}
 			}
 			return true;
 		}
 		return false;
-
 	}
 	/*
 	 * public boolean puedeComprar(Propuestas propuesta) { if (this.getPresupuesto()
