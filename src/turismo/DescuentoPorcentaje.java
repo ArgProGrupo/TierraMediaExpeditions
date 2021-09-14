@@ -6,8 +6,7 @@ import java.util.List;
 public class DescuentoPorcentaje extends Promocion {
 	public double descuento;
 
-	public DescuentoPorcentaje(String nombrePropuesta, TipoAtraccion tipo, 
-			int cantAtracciones, double descuento,
+	public DescuentoPorcentaje(String nombrePropuesta, TipoAtraccion tipo, int cantAtracciones, double descuento,
 			List<Propuestas> promo) {
 		super(nombrePropuesta, tipo, cantAtracciones);
 		this.descuento = descuento;
@@ -36,9 +35,8 @@ public class DescuentoPorcentaje extends Promocion {
 
 	@Override
 	public String toString() {
-		return "Promocion: " + nombrePropuesta + "; Costo: " + calcularCosto() +
-				"; Tiempo: " + calcularTiempo()	+ "; Cupo: " + calcularCupo() + 
-				"; Cantidad de atracciones: " + cantAtracciones + "; Descuento: "
+		return "Promocion: " + nombrePropuesta + "; Costo: " + calcularCosto() + "; Tiempo: " + calcularTiempo()
+				+ "; Cupo: " + calcularCupo() + "; Cantidad de atracciones: " + cantAtracciones + "; Descuento: "
 				+ (100 - (descuento * 100)) + "%";
 	}
 

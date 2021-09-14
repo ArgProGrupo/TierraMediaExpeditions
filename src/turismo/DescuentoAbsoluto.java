@@ -6,15 +6,13 @@ import java.util.List;
 public class DescuentoAbsoluto extends Promocion {
 	private int descuento;
 
-
-	public DescuentoAbsoluto(String nombrePropuesta, TipoAtraccion tipo, 
-			int cantAtracciones, int descuento,
+	public DescuentoAbsoluto(String nombrePropuesta, TipoAtraccion tipo, int cantAtracciones, int descuento,
 			List<Propuestas> promo) {
 		super(nombrePropuesta, tipo, cantAtracciones);
 		this.descuento = descuento;
 		this.promo = (ArrayList<Propuestas>) promo;
 	}
-	
+
 	private int getDescuento() {
 		return descuento;
 	}
@@ -33,14 +31,14 @@ public class DescuentoAbsoluto extends Promocion {
 	public int calcularCupo() {
 		return super.calcularCupo();
 	}
-	
+
 	@Override
 	public String toString() {
-		return "Promocion: " + nombrePropuesta + "; Costo: " + calcularCosto() + "; Tiempo: "
-	+ calcularTiempo() + "; Cupo: " + calcularCupo() + "; Cantidad de atracciones: "  
-				+ cantAtracciones + "; Descuento: " + getDescuento() +" Monedas de oro";
+		return "Promocion: " + nombrePropuesta + "; Costo: " + calcularCosto() + "; Tiempo: " + calcularTiempo()
+				+ "; Cupo: " + calcularCupo() + "; Cantidad de atracciones: " + cantAtracciones + "; Descuento: "
+				+ getDescuento() + " Monedas de oro";
 	}
-	
+
 	public int getCosto() {
 		return calcularCosto();
 	}

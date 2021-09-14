@@ -8,8 +8,8 @@ import administradorDeArchivos.ListaPropuestas;
 public class DescuentoTresPorDos extends Promocion {
 	public Propuestas atraccionGratis;
 
-	public DescuentoTresPorDos(String nombrePropuesta,TipoAtraccion tipo,
-			int cantAtracciones, Propuestas atraccionGratis, List<Propuestas> promo) {
+	public DescuentoTresPorDos(String nombrePropuesta, TipoAtraccion tipo, int cantAtracciones,
+			Propuestas atraccionGratis, List<Propuestas> promo) {
 		super(nombrePropuesta, tipo, cantAtracciones);
 		this.promo = (ArrayList<Propuestas>) promo;
 		this.atraccionGratis = atraccionGratis;
@@ -20,9 +20,9 @@ public class DescuentoTresPorDos extends Promocion {
 		ListaPropuestas.leerAtraccion();
 		for (Propuestas a : propuestas) {
 			if (a.getNombre().equals(atraccionGratis.getNombre())) {
-				
-					System.out.println(promo);
-				
+
+				System.out.println(promo);
+
 			}
 		}
 		return atraccionGratis;
@@ -35,9 +35,10 @@ public class DescuentoTresPorDos extends Promocion {
 
 	@Override
 	public int calcularCupo() {
-		if(super.calcularCupo() >= atraccionGratis.getCupo()) 
+		if (super.calcularCupo() >= atraccionGratis.getCupo())
 			return atraccionGratis.getCupo();
-		else return super.calcularCupo();
+		else
+			return super.calcularCupo();
 	}
 
 	@Override
@@ -63,9 +64,8 @@ public class DescuentoTresPorDos extends Promocion {
 
 	@Override
 	public String toString() {
-		return "Promocion: " + nombrePropuesta + "; Costo: " + calcularCosto() +
-				"; Tiempo: " + calcularTiempo() + "; Cupo: " + calcularCupo() + 
-				"; Cantidad de atracciones: " + promo.size() + 
-				"; Atraccion de regalo: "	+ atraccionGratis.getNombre();
+		return "Promocion: " + nombrePropuesta + "; Costo: " + calcularCosto() + "; Tiempo: " + calcularTiempo()
+				+ "; Cupo: " + calcularCupo() + "; Cantidad de atracciones: " + promo.size() + "; Atraccion de regalo: "
+				+ atraccionGratis.getNombre();
 	}
 }
