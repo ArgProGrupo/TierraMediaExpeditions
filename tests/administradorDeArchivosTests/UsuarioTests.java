@@ -56,7 +56,6 @@ public class UsuarioTests {
 		u4.comprarPropuesta(a1);
 		assertEquals(1, u4.getPresupuesto());
 		assertEquals(5, u4.getTiempo(), 0);
-		// assertEquals(1, a1.getCupo());
 	}
 
 	@Test
