@@ -4,14 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DescuentoPorcentaje extends Promocion {
-	private double descuento;
+	public double descuento;
 
-	public DescuentoPorcentaje(String nombrePropuesta, TipoAtraccion tipo,
+	public DescuentoPorcentaje(String nombrePropuesta, TipoAtraccion tipo, 
 			int cantAtracciones, double descuento, List<Propuestas> promo) {
+		
 		super(nombrePropuesta, tipo, cantAtracciones);
 		this.descuento = descuento;
-		this.promo = new ArrayList<Propuestas>(); 
-		this.esPromo = true;
+		this.promo = (ArrayList<Propuestas>) promo;
+		DescuentoPorcentaje.cantAtracciones = cantAtracciones;
 	}
 
 	public double getDescuento() {
@@ -20,38 +21,40 @@ public class DescuentoPorcentaje extends Promocion {
 
 	@Override
 	public int calcularCosto() {
-		int costopromo = 0;
-		for(Propuestas p: promo) {
-			costopromo += getCosto();
-	}
-		return this.costo = (int) (costopromo* getDescuento());
+		return (int) (super.calcularCosto() * this.getDescuento());
 	}
 
 	@Override
 	public double calcularTiempo() {
-		double tiempototal = 0;
-		for(Propuestas p : promo) {
-			tiempototal += getTiempo();
-		}
-		return this.tiempo = tiempototal;
+		return super.calcularTiempo();
 	}
 
 	@Override
 	public int calcularCupo() {
-		int cupoMaximo = 100;
-		for (Propuestas p : promo) {
-			if(cupoMaximo > getCupo())
-				cupoMaximo = getCupo();
-		}
-		return cupoMaximo;
+		return super.calcularCupo();
 	}
 
 	@Override
 	public String toString() {
-		return "Promocion: " + nombrePropuesta + "; Costo: " + getCosto() + "; Tiempo: "
-	+ getTiempo() + "; Cupo: " + getCupo() + "; Cantidad de atracciones: "  
-				+ cantAtracciones + "; Descuento" + descuento*100 + "%";
+		return "Promocion: " + nombrePropuesta + "; Costo: " + calcularCosto() +
+				"; Tiempo: " + calcularTiempo()	+ "; Cupo: " + calcularCupo() + 
+				"; Cantidad de atracciones: " + cantAtracciones + "; Descuento: "
+				+ (100 - (descuento * 100)) + "%";
 	}
-	
-	
+
+	public int getCosto() {
+		return calcularCosto();
+	}
+
+	public double getTiempo() {
+		return calcularTiempo();
+	}
+
+	public int getCupo() {
+		return calcularCupo();
+	}
+
+	public TipoAtraccion getTipo() {
+		return this.tipo;
+	}
 }

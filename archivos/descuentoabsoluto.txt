@@ -1,1 +1,3 @@
-Pack DEGUSTACION,DEGUSTACION,2,Lothl�rien,La Comarca,
+Porcentaje-Pack AVENTURA-AVENTURA-2-0.8-Moria,Bosque Negro
+Absoluto-Pack DEGUSTACION-DEGUSTACION-2-10-Lothlórien,La Comarca
+TresXDos-Pack PAISAJE-PAISAJE-3-Erebor-Minas Tirith,el Abismo de Helmlórien,La Comarca,

@@ -1,55 +1,58 @@
 package turismo;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class DescuentoAbsoluto extends Promocion {
-	
-	
-	/*public DescuentoAbsoluto(List<Atraccion> atracciones, String nombrePropuesta, int costo, double tiempo, int cupo,
-			TipoAtraccion tipo) {
-		super(atracciones, nombrePropuesta, costo, tiempo, cupo, tipo);
-	}*/
-	
-    // HEAD
-	/*public DescuentoAbsoluto(List<Atraccion> atracciones, String nombrePropuesta) {
-		super(atracciones, nombrePropuesta);*/
-	// =======
-	public DescuentoAbsoluto(String nombrePropuesta, int costo, double tiempo,
-			int cupo, TipoAtraccion tipo, int cantAtracciones, int descuento) {
-		super(nombrePropuesta, tipo, descuento);
-		this.descuento = descuento;
-		Atraccion[] atracciones = new Atraccion[cantAtracciones];
-	}
-
 	private int descuento;
 
+
+	public DescuentoAbsoluto(String nombrePropuesta, TipoAtraccion tipo, 
+			int cantAtracciones, int descuento,
+			List<Propuestas> promo) {
+		super(nombrePropuesta, tipo, cantAtracciones);
+		this.descuento = descuento;
+		this.promo = (ArrayList<Propuestas>) promo;
+	}
 	
 	private int getDescuento() {
 		return descuento;
 	}
 
-	@Override
-	public void calcularCosto() {
-		/*this.costo = (int) ((atracciones[0].getCosto() + 
-				atracciones[1].getCosto()) - getDescuento());*/
+	public int calcularCosto() {
+		return (super.calcularCosto() - this.descuento);
 	}
 
 	@Override
-	public void calcularTiempo() {
-		/*this.tiempo = ((atracciones[0].getTiempo() + atracciones[1].getTiempo()));*/
+	public double calcularTiempo() {
+		return super.calcularTiempo();
 	}
-
+	
 	@Override
 	public int calcularCupo() {
-		/*if (atracciones[0].getCupo() > atracciones[1].getCupo())
-			return atracciones[0].getCupo();
-		else
-			return atracciones[1].getCupo();*/
+		return super.calcularCupo();
+	}
+	
+	@Override
+	public String toString() {
+		return "Promocion: " + nombrePropuesta + "; Costo: " + calcularCosto() + "; Tiempo: "
+	+ calcularTiempo() + "; Cupo: " + calcularCupo() + "; Cantidad de atracciones: "  
+				+ cantAtracciones + "; Descuento: " + getDescuento() +" Monedas de oro";
+	}
+	
+	public int getCosto() {
+		return calcularCosto();
 	}
 
-	@Override
-	public boolean esPromo() {
-		// TODO Auto-generated method stub
-		return true;
+	public double getTiempo() {
+		return calcularTiempo();
+	}
+
+	public int getCupo() {
+		return calcularCupo();
+	}
+
+	public TipoAtraccion getTipo() {
+		return this.tipo;
 	}
 }

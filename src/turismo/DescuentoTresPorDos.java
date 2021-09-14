@@ -1,38 +1,71 @@
 package turismo;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import administradorDeArchivos.ListaPropuestas;
+
 public class DescuentoTresPorDos extends Promocion {
-	private Atraccion atraccionGratis;
+	public Propuestas atraccionGratis;
 
-	public DescuentoTresPorDos(String nombrePropuesta, int costo, double tiempo, int cupo, TipoAtraccion tipo,
-			int cantAtracciones) {
+	public DescuentoTresPorDos(String nombrePropuesta,TipoAtraccion tipo,
+			int cantAtracciones, Propuestas atraccionGratis, List<Propuestas> promo) {
 		super(nombrePropuesta, tipo, cantAtracciones);
-		Atraccion[] atracciones = new Atraccion[cantAtracciones];
+		this.promo = (ArrayList<Propuestas>) promo;
+		this.atraccionGratis = atraccionGratis;
 	}
-	
 
-	public Atraccion getAtraccionGratis() {
+	public Propuestas getAtraccionGratis() {
+		List<Propuestas> propuestas = new ArrayList<Propuestas>();
+		ListaPropuestas.leerAtraccion();
+		for (Propuestas a : propuestas) {
+			if (a.getNombre().equals(atraccionGratis.getNombre())) {
+				
+					System.out.println(promo);
+				
+			}
+		}
 		return atraccionGratis;
 	}
 
 	@Override
-	public void calcularCosto() {
-		this.costo = (int) ((atracciones[0].getCosto() + atracciones[1].getCosto()));
-
-	}
-
-	@Override
-	public void calcularTiempo() {
-		this.tiempo = atracciones[0].getTiempo() + atracciones[1].getTiempo() + atracciones[2].getTiempo();
+	public int calcularCosto() {
+		return (super.calcularCosto() - atraccionGratis.getCosto());
 	}
 
 	@Override
 	public int calcularCupo() {
-		if (atracciones[0].getCupo() > atracciones[1].getCupo() && 
-				atracciones[0].getCupo() > atracciones[2].getCupo())
-			return atracciones[0].getCupo();
-		else if (atracciones[1].getCupo() > atracciones[2].getCupo())
-			return atracciones[1].getCupo();
-		else
-			return atracciones[3].getCupo();
-	}	
+		if(super.calcularCupo() >= atraccionGratis.getCupo()) 
+			return atraccionGratis.getCupo();
+		else return super.calcularCupo();
+	}
+
+	@Override
+	public double calcularTiempo() {
+		return super.calcularTiempo();
+	}
+
+	public int getCosto() {
+		return calcularCosto();
+	}
+
+	public double getTiempo() {
+		return calcularTiempo();
+	}
+
+	public int getCupo() {
+		return calcularCupo();
+	}
+
+	public TipoAtraccion getTipo() {
+		return this.tipo;
+	}
+
+	@Override
+	public String toString() {
+		return "Promocion: " + nombrePropuesta + "; Costo: " + calcularCosto() +
+				"; Tiempo: " + calcularTiempo() + "; Cupo: " + calcularCupo() + 
+				"; Cantidad de atracciones: " +	promo.size() + 
+				"; Atraccion de regalo: " + atraccionGratis.getNombre();
+	}
 }

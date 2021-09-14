@@ -2,7 +2,7 @@ package turismo;
 
 import java.util.Objects;
 
-public class Propuestas {
+public abstract class Propuestas {
 	protected String nombrePropuesta;
 	protected int costo;
 	protected double tiempo;
@@ -26,27 +26,24 @@ public class Propuestas {
 	}
 	
 // agregar booleano de espromo
-	
-	//public abstract boolean esPromo();
-	
 	public int getCosto() {
 		return this.costo;
 	}
 
 	public double getTiempo() {
-		return tiempo;
+		return this.tiempo;
 	}
 
 	public int getCupo() {
-		return cupo;
+		return this.cupo;
 	}
 
 	public TipoAtraccion getTipo() {
-		return tipo;
+		return this.tipo;
 	}
 	
 	public String getNombre() {
-		return nombrePropuesta;
+		return this.nombrePropuesta;
 	}
 	@Override
 	public int hashCode() {
@@ -77,4 +74,6 @@ public class Propuestas {
 		return cupo;
 		
 }
+	protected abstract boolean esOContiene(Propuestas propuesta);
+
 }

@@ -23,9 +23,11 @@ public class App {
 			propuestas.sort(new ComparadorDeAtracciones(u.getTipoAtraccionFavorita()));
 			System.out.println("---------------");
 			for (Propuestas a : propuestas) {
-				if (u.puedeComprar(a) && a.getCupo()>0) {
+				if(!u.tieneTiempoYDinero())  break;
+				else if (u.puedeComprar(a) ) {
 					System.out.println(a);
-					System.out.println("Si queres comprar esta propuesta marca 1, sino marca cualquier otro número");
+					System.out.println("Si queres comprar esta propuesta marca 1, "
+							+ "sino marca cualquier otro número");
 					int acepta = scanner.nextInt();
 					if (acepta == 1) {
 						System.out.println("Compraste " + a + "\n");
