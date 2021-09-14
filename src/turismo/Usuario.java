@@ -4,7 +4,7 @@ import java.io.*;
 import java.util.*;
 
 public class Usuario {
-	
+
 	public String nombre;
 	public int presupuesto;
 	public double tiempoDisponible;
@@ -85,8 +85,8 @@ public class Usuario {
 				if (itinerarioUsuario.contains(propuesta)) {
 					return true;
 				} else {
-					for (Propuestas p : itinerarioUsuario) { 
-							return (p.esOContiene(propuesta));
+					for (Propuestas p : itinerarioUsuario) {
+						return (p.esOContiene(propuesta));
 					}
 				}
 			}
@@ -107,7 +107,7 @@ public class Usuario {
 	}
 
 	public boolean tieneTiempoYDinero() {
-		if(this.getPresupuesto() > 0 && this.getTiempo() > 0)
+		if (this.getPresupuesto() > 0 && this.getTiempo() > 0)
 			return true;
 		else
 			return false;
