@@ -5,11 +5,11 @@ import static org.junit.Assert.assertEquals;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.junit.Before;
-import org.junit.Test;
+import org.junit.*;
 
 import administradorDeArchivos.ListaPropuestas;
 import turismo.Atraccion;
+import turismo.ComparadorDeAtracciones;
 import turismo.DescuentoAbsoluto;
 import turismo.DescuentoPorcentaje;
 import turismo.DescuentoTresPorDos;
@@ -21,6 +21,7 @@ public class ListaPropuestasTests {
 	List<Propuestas> propuestas = new ArrayList<Propuestas>();
 	
 	Atraccion[] atraccionTest = new Atraccion[8];
+	Promocion[] promocionTest = new Promocion[3];
 	
 	@Before
 	public void setup() {
@@ -34,12 +35,42 @@ public class ListaPropuestasTests {
 		atraccionTest[7] = new Atraccion("Bosque Negro", 3, 4, 12, TipoAtraccion.AVENTURA);
 		
 		propuestas = ListaPropuestas.leerAtraccion();
+		
+		
+		
+		List<Propuestas> packAventura = new ArrayList<Propuestas>();
+		packAventura.add(atraccionTest[3]);
+		packAventura.add(atraccionTest[7]);
+		
+		List<Propuestas> packDegustacion = new ArrayList<Propuestas>();
+		packDegustacion.add(atraccionTest[2]);
+		packDegustacion.add(atraccionTest[5]);
+		
+		List<Propuestas> packPaisaje = new ArrayList<Propuestas>();
+		packPaisaje.add(atraccionTest[1]);
+		packPaisaje.add(atraccionTest[4]);
+		packPaisaje.add(atraccionTest[6]);
+		
+		promocionTest[0] = new DescuentoPorcentaje("Pack AVENTURA", TipoAtraccion.AVENTURA, 
+				2, 0.8, packAventura);
+		promocionTest[1] = new DescuentoAbsoluto("Pack DEGUSTACION", TipoAtraccion.DEGUSTACION, 
+				2, 2, packDegustacion);
+		promocionTest[2] = new DescuentoTresPorDos("Pack PAISAJE", TipoAtraccion.PAISAJE, 
+				3, atraccionTest[6], packPaisaje);
+	}
+	
+	@Test
+	public void leePromocionesTest() {
+		
+		assertEquals(atraccionTest[0], propuestas.get(0));
+		assertEquals(atraccionTest[1], propuestas.get(1));
+		assertEquals(atraccionTest[2], propuestas.get(2));
 	}
 
 	@Test
 	public void leeAtraccionesTest() {
 		assertEquals(atraccionTest[0], propuestas.get(0));
-		assertEquals(atraccionTest[1], propuestas.get((propuestas.size()) - (propuestas.size() - 1)));// Aca podria ir 1
+		assertEquals(atraccionTest[1], propuestas.get(1));
 		assertEquals(atraccionTest[2], propuestas.get(2));
 		assertEquals(atraccionTest[3], propuestas.get(3));
 		assertEquals(atraccionTest[4], propuestas.get(4));
@@ -48,38 +79,81 @@ public class ListaPropuestasTests {
 		assertEquals(atraccionTest[7], propuestas.get(7));
 	}
 
+	
+	
 	@Test
-	public void leePromocionesTest() {
-		Promocion[] promocionTest = new Promocion[3];
-		
-		List<Propuestas> packAventura = new ArrayList<Propuestas>();
-		packAventura.add(atraccionTest[0]);
-		packAventura.add(atraccionTest[7]);
-		
-		List<Propuestas> packDegustacion = new ArrayList<Propuestas>();
-		packDegustacion.add(atraccionTest[2]);
-		packDegustacion.add(atraccionTest[5]);
-		
-		List<Propuestas> packPaisaje = new ArrayList<Propuestas>();
-		packDegustacion.add(atraccionTest[1]);
-		packDegustacion.add(atraccionTest[4]);
-		
-		promocionTest[0] = new DescuentoPorcentaje("Pack AVENTURA", TipoAtraccion.AVENTURA, 
-				2, 0.8, packAventura);
-		promocionTest[1] = new DescuentoAbsoluto("Pack DEGUSTACION", TipoAtraccion.DEGUSTACION, 
-				2, 2, packAventura);
-		promocionTest[2] = new DescuentoTresPorDos("Pack PAISAJE", TipoAtraccion.PAISAJE, 
-				3, atraccionTest[6], packPaisaje);
-		
-		assertEquals(atraccionTest[0], propuestas.get(0));
-		assertEquals(atraccionTest[1], propuestas.get(1));
-		assertEquals(atraccionTest[2], propuestas.get(2));
+	public void calcularCostoTest() {
+		assertEquals(22, promocionTest[0].calcularCosto());
+		assertEquals(36, promocionTest[1].calcularCosto());
+		assertEquals(10, promocionTest[2].calcularCosto());
 	}
 	
-	public void calculaCostoTest() {
-		assertEquals(propuestas.get(0).getCosto(), 22);
-		assertEquals(propuestas.get(1).getCosto(), 36);
-		assertEquals(propuestas.get(2).getCosto(), 10);
+	@Test
+	public void calcularTiempoTest() {
+		assertEquals(7, promocionTest[0].calcularTiempo(), 0.01);
+		assertEquals(7.5, promocionTest[1].calcularTiempo(), 0.01);
+		assertEquals(7.5, promocionTest[2].calcularTiempo(), 0.01);
+	}
+	
+	@Test
+	public void calculaCupoTest() {
+		assertEquals(4, promocionTest[0].calcularCupo());
+		assertEquals(30, promocionTest[1].calcularCupo());
+		assertEquals(15, promocionTest[2].calcularCupo());
+	}
+	
+	@Test
+	public void comparadorAventuraTest() {
+		propuestas.sort(new ComparadorDeAtracciones(TipoAtraccion.AVENTURA));
+		
+		assertEquals(promocionTest[0], propuestas.get(0));
+		assertEquals(atraccionTest[3], propuestas.get(1));
+		assertEquals(atraccionTest[0], propuestas.get(2));
+		assertEquals(atraccionTest[7], propuestas.get(3));
+		assertEquals(promocionTest[1], propuestas.get(4));
+		assertEquals(promocionTest[2], propuestas.get(5));
+		assertEquals(atraccionTest[5], propuestas.get(6));
+		assertEquals(atraccionTest[6], propuestas.get(7));
+		assertEquals(atraccionTest[1], propuestas.get(8));
+		assertEquals(atraccionTest[4], propuestas.get(9));
+		assertEquals(atraccionTest[2], propuestas.get(10));
+		
+	}
+	
+	@Test
+	public void comparadorDegustacionTest() {
+		propuestas.sort(new ComparadorDeAtracciones(TipoAtraccion.DEGUSTACION));
+		
+		assertEquals(promocionTest[1], propuestas.get(0));
+		assertEquals(atraccionTest[5], propuestas.get(1));
+		assertEquals(atraccionTest[2], propuestas.get(2));
+		assertEquals(promocionTest[0], propuestas.get(3));
+		assertEquals(promocionTest[2], propuestas.get(4));
+		assertEquals(atraccionTest[3], propuestas.get(5));
+		assertEquals(atraccionTest[6], propuestas.get(6));
+		assertEquals(atraccionTest[0], propuestas.get(7));
+		assertEquals(atraccionTest[1], propuestas.get(8));
+		assertEquals(atraccionTest[4], propuestas.get(9));
+		assertEquals(atraccionTest[7], propuestas.get(10));
+		
+	}
+	
+	@Test
+	public void comparadorPaisajeTest() {
+		propuestas.sort(new ComparadorDeAtracciones(TipoAtraccion.PAISAJE));
+		
+		assertEquals(promocionTest[2], propuestas.get(0));
+		assertEquals(atraccionTest[6], propuestas.get(1));
+		assertEquals(atraccionTest[1], propuestas.get(2));
+		assertEquals(atraccionTest[4], propuestas.get(3));
+		assertEquals(promocionTest[1], propuestas.get(4));
+		assertEquals(promocionTest[0], propuestas.get(5));
+		assertEquals(atraccionTest[5], propuestas.get(6));
+		assertEquals(atraccionTest[3], propuestas.get(7));
+		assertEquals(atraccionTest[0], propuestas.get(8));
+		assertEquals(atraccionTest[2], propuestas.get(9));
+		assertEquals(atraccionTest[7], propuestas.get(10));
+		
 	}
 }
 //		Atraccion [] lalala = new Atraccion [propuestas.size()]; //[propuestas.size()];
