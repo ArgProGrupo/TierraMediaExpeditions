@@ -12,27 +12,22 @@ public class ListaDeUsuarios {
 		File f = new File("archivos/Usuarios.txt");
 		Scanner sc;
 		Usuario[] usuarios = null;
-		
+
 		try {
 			sc = new Scanner(f);
-			
+
 			int size = sc.nextInt();
 			usuarios = new Usuario[size];
-			
+
 			String[] line;
 			sc.nextLine();
-			
-			for(int i=0; i<size; i++) {
+
+			for (int i = 0; i < size; i++) {
 				line = sc.nextLine().split(",");
-				
-				usuarios[i] = new Usuario(
-						line[0],
-						Integer.parseInt(line[1]),
-						Double.parseDouble(line[2]),
-						TipoAtraccion.valueOf(line[3])
-						);
-				
-				//line = null;
+
+				usuarios[i] = new Usuario(line[0], Integer.parseInt(line[1]), Double.parseDouble(line[2]),
+						TipoAtraccion.valueOf(line[3]));
+
 			}
 			sc.close();
 		} catch (FileNotFoundException e) {
