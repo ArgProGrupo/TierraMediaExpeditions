@@ -3,6 +3,6 @@ Minas Tirith,5,2.5,25,PAISAJE
 La Comarca,3,6.5,50,DEGUSTACION
 Mordor,25,3,4,AVENTURA
 Abismo de Helm,5,2,15,PAISAJE
-Lothlórien,35,1,30,DEGUSTACION
+Lothlorien,35,1,30,DEGUSTACION
 Erebor,12,3,32,PAISAJE
 Bosque Negro,3,4,12,AVENTURA

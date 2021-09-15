@@ -2,13 +2,12 @@ package turismo;
 
 import java.util.*;
 
-public abstract class Promocion extends Propuestas{
+public abstract class Promocion extends Propuestas {
 	protected static int cantAtracciones;
 	protected ArrayList<Propuestas> promo;
 	protected double descuento;
-	
-	public Promocion(String nombrePropuesta, TipoAtraccion tipo,
-			int cantAtracciones) {
+
+	public Promocion(String nombrePropuesta, TipoAtraccion tipo, int cantAtracciones) {
 		super(nombrePropuesta, tipo, cantAtracciones);
 		this.esPromo = true;
 		this.promo = (ArrayList<Propuestas>) promo;
@@ -29,7 +28,7 @@ public abstract class Promocion extends Propuestas{
 		}
 		return this.tiempo = tiempototal;
 	}
-	
+
 	public int calcularCupo() {
 		int cupoMaximo = 100;
 		for (Propuestas p : promo) {
@@ -38,26 +37,29 @@ public abstract class Promocion extends Propuestas{
 		}
 		return cupoMaximo;
 	}
-	
+
 	@Override
 	public int restarCupo() {
 		for (Propuestas p : promo)
 			if (p.cupo > 0) {
 				p.cupo = p.getCupo();
 				p.cupo--;
-				System.out.println("El cupo disponible para " + p.getNombre() + 
-						" es de " + p.cupo + ".");
+				System.out.println("El cupo disponible para " + p.getNombre() + " es de " + p.cupo + ".");
 			}
 		System.out.println("------------------------");
 		return calcularCupo();
 	}
-	
+
 	@Override
 	protected boolean esOContiene(Propuestas propuesta) {
-		if (this.promo.contains(propuesta))
-			return false;
-		else
-			return true;
-	}
+		if (propuesta.esPromo) {
+			for (Propuestas a : this.promo) {
+				if (propuesta.esOContiene(a))
+					return true;
 
+			}
+		} else
+			return (this.promo.contains(propuesta));
+		return false;
+	}
 }

@@ -5,7 +5,6 @@ import java.util.*;
 
 public class Usuario {
 
-	// atributos
 	public String nombre;
 	public int presupuesto;
 	public double tiempoDisponible;
@@ -21,7 +20,6 @@ public class Usuario {
 
 	}
 
-	// getters
 	public String getNombre() {
 		return nombre;
 	}
@@ -77,15 +75,16 @@ public class Usuario {
 				&& propuesta.getCupo() > 0) {
 			if (propuesta.esPromo) {
 				for (Propuestas p : itinerarioUsuario) {
-					if (p.equals(propuesta))
-						return true;
+					if (propuesta.esOContiene(p))
+						return false;
 				}
 			} else {
 				if (itinerarioUsuario.contains(propuesta)) {
-					return true;
+					return false;
 				} else {
 					for (Propuestas p : itinerarioUsuario) {
-						return (p.esOContiene(propuesta));
+						if (p.esOContiene(propuesta))
+							return false;
 					}
 				}
 			}
