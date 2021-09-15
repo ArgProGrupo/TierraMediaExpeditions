@@ -11,13 +11,14 @@ public class Usuario {
 	public TipoAtraccion atraccionFavorita;
 	public ArrayList<Propuestas> itinerarioUsuario;
 
-	public Usuario(String nombre, int presupuesto, double tiempoDisponible, TipoAtraccion atraccionFavorita) {
+	public Usuario(String nombre, int presupuesto, double tiempoDisponible,
+					TipoAtraccion atraccionFavorita) {
+		
 		this.nombre = nombre;
 		this.presupuesto = presupuesto;
 		this.tiempoDisponible = tiempoDisponible;
 		this.atraccionFavorita = atraccionFavorita;
 		this.itinerarioUsuario = new ArrayList<Propuestas>();
-
 	}
 
 	public String getNombre() {
@@ -66,13 +67,15 @@ public class Usuario {
 
 	@Override
 	public String toString() {
-		return "Nombre: " + nombre + " | Presupuesto: " + presupuesto + " | Tiempo Disponible: " + tiempoDisponible
-				+ " | Atraccion Favorita: " + atraccionFavorita;
+		return "Nombre: " + nombre + " | Presupuesto: " + presupuesto +
+			   " | Tiempo Disponible: " + tiempoDisponible +
+			   " | Atraccion Favorita: " + atraccionFavorita;
 	}
 
 	public boolean puedeComprar(Propuestas propuesta) {
-		if (this.getPresupuesto() >= propuesta.getCosto() && this.getTiempo() >= propuesta.getTiempo()
-				&& propuesta.getCupo() > 0) {
+		if (this.getPresupuesto() >= propuesta.getCosto() && 
+			this.getTiempo() >= propuesta.getTiempo() &&
+			propuesta.getCupo() > 0) {
 			if (propuesta.esPromo) {
 				for (Propuestas p : itinerarioUsuario) {
 					if (propuesta.esOContiene(p))
@@ -99,7 +102,8 @@ public class Usuario {
 			this.tiempoDisponible -= propuesta.getTiempo();
 			itinerarioUsuario.add(propuesta);
 
-			System.out.println("Te quedan " + this.presupuesto + " monedas y " + this.tiempoDisponible + " horas");
+			System.out.println("Te quedan " + this.presupuesto + " monedas y " +
+								this.tiempoDisponible + " horas");
 		}
 	}
 

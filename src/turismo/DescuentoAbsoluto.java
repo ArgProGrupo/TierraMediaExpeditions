@@ -17,7 +17,6 @@ public class DescuentoAbsoluto extends Promocion {
 		return descuento;
 	}
 
-	@Override
 	public int calcularCosto() {
 		return (super.calcularCosto() - this.descuento);
 	}
@@ -26,7 +25,7 @@ public class DescuentoAbsoluto extends Promocion {
 	public double calcularTiempo() {
 		return super.calcularTiempo();
 	}
-
+	
 	@Override
 	public int calcularCupo() {
 		return super.calcularCupo();
